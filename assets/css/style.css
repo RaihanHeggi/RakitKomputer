@@ -4,7 +4,7 @@ body {
 
 .bodyLogin {
 	font-family: "Poppins", sans-serif;
-	background: #d5f0f3;
+	background: #d1f3f3;
 }
 
 h1 {
@@ -18,11 +18,12 @@ h1 {
 }
 
 .login_card {
-	width: 350px;
+	width: 90%;
 	background: white;
-	margin: 80px auto;
+	margin: 20px auto;
 	padding: 40px 30px;
 	border-radius: 5px;
+	box-shadow: 5px 5px 20px;
 }
 
 label {
@@ -34,7 +35,7 @@ label {
 	width: 100%;
 	padding: 10px;
 	font-size: 11pt;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .buttonLogin {
@@ -54,6 +55,33 @@ label {
 }
 
 #LoginHeader {
+	margin-top: 30px;
 	font-size: 50pt;
 	font-weight: bold;
+}
+
+.grid {
+	display: grid;
+}
+.grid-left {
+	grid-column-start: 1;
+	grid-column-end: 2;
+}
+.grid-right {
+	grid-column-start: 2;
+	grid-column-end: 3;
+}
+
+img {
+	width: 1080px;
+	height: 800px;
+	box-shadow: 0 0 8px 8px white inset;
+	border-radius: 5x;
+}
+
+footer {
+	background-color: #7e57c2;
+	align-self: end;
+	grid-column: 2;
+	margin-bottom: 1em;
 }
