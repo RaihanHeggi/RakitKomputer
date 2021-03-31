@@ -45,10 +45,10 @@ class LoginController extends CI_Controller {
 
 	public function loginController(){
 		$username = $this->input->post('username');
-		$password = $this->input->post('password')
-		if($this->pelanggan_model->cekData($nama,$password) || $this->admin_model->cekData($nama,$password) || $this->konsultan_model->cekData($nama,$password) || $this->manajer_model->cekData($nama,$password)){
+		$password = $this->input->post('password');
+		if(($this->pelanggan_model->cekData($nama,$password)) || ($this->admin_model->cekData($nama,$password)) || ($this->konsultan_model->cekData($nama,$password)) || ($this->manajer_model->cekData($nama,$password))){
 			loginProses($nama,$password);
-		}else if ($this->user_model->cekData($nama,$password){
+		}else if($this->user_model->cekData($nama,$password)){
 			loginProses($nama,$password);
 		}else{
 			$this->session->set_flashdata('error_messages','<div class="alert alert-danger alert-dismissible fade show" role="alert">
