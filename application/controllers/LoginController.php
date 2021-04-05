@@ -3,18 +3,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LoginController extends CI_Controller {
 
+	function __construct()
+    {
+        #$this->load->model("user","user_model");
+		#$this->load->model("pelanggan","pelanggan_model");
+		#$this->load->model("admin","admin_model");
+		#$this->load->model("konsultan","konsultan_model");
+		#$this->load->model("manajer","manajer_model");
+        #$this->load->model('modelRS');  
+		parent::__construct();
+        #$this->load->model('LoginModel');
+        $this->load->helper('url');  
+    }
+
 	public function index()
 	{
-		$this->load->model("user","user_model");
-		$this->load->model("pelanggan","pelanggan_model");
-		$this->load->model("admin","admin_model");
-		$this->load->model("konsultan","konsultan_model");
-		$this->load->model("manajer","manajer_model");
 		$this->load->view('login/ViewLogin');
 	}
 
-
-	public function loginProses($nama,$password){
+	/*public function loginProses($nama,$password){
 		$data_session = array(
 			'nama' => $email,
 			'password' => $password
@@ -55,5 +62,5 @@ class LoginController extends CI_Controller {
              Username dan Password Tidak Sesuai. </div>'); 
             redirect(base_url());
 		}
-	}
+	}*/
 }
