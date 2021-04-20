@@ -49,7 +49,7 @@
                     <input type="password" name="password" class="form_login" placeholder="Masukkan Password">
         
                     <div class="signUp">
-                        <p>Belum Mempunyai Akun ? <span><a href="<?= site_url('a') ?>" style="color: #17A1EF;">Register</a></span></p>
+                        <p>Belum Mempunyai Akun ? <span><a href="<?= site_url('halaman_register') ?>" style="color: #17A1EF;">Register</a></span></p>
                     </div>
                     <input type="submit" class="buttonLogin" value="LOGIN">
                 </form>
