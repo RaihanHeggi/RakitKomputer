@@ -41,9 +41,12 @@
             </svg>
             <h1 id="LoginHeader">Selamat</br>Datang</h1>
             <div class="login_card">
-                <form action="" method="post">
-                    <label>Username/Email</label>
-                    <input type="text" name="username" class="form_login" placeholder="Masukkan Username atau Email">
+                <div class="form-group">
+                    <?php echo $this->session->flashdata('error_messages'); ?>
+                </div>
+                <form action="<?= site_url('proses_login') ?>" method="post">
+                    <label>Email</label>
+                    <input type="text" name="email" class="form_login" placeholder="Masukkan Email">
         
                     <label>Password</label>
                     <input type="password" name="password" class="form_login" placeholder="Masukkan Password">

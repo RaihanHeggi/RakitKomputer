@@ -30,29 +30,48 @@
         </div>
     </nav>
     <div class="grid">
-        <div class="grid-left">
-            <h1 id="LoginHeader">Menu Register</h1>
-            <div class="login_card">
-                <form action="<?= site_url('RegisterController/registerData') ?>" method="post">
+        <h1 id="LoginHeader">Menu Register</h1>
+        <div class="login_card">
+            <div class="form-group">
+                <?php echo $this->session->flashdata('error_messages'); ?>
+            </div>
+            <form action="<?= site_url('RegisterController/registerData') ?>" method="post">
+                <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama" required>
+                </div>
+                <div class="form-group">
                     <label>Email</label>
-                    <input type="text" name="email" class="form_login" placeholder="Masukkan Email" required>
+                    <input type="text" name="email" class="form-control" placeholder="Masukkan Email" required>
+                </div>
+                <div class="form-group">
                     <label>Username</label>
-                    <input type="text" name="username" class="form_login" placeholder="Masukkan Username" required>
+                    <input type="text" name="username" class="form-control" placeholder="Masukkan Username" required>
+                </div>
+                <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="password" class="form_login" placeholder="Masukkan Password" required>
+                    <input type="password" name="password" class="form-control" placeholder="Masukkan Password" required>
+                </div>
+                <div class="form-group">
                     <label>Re-Password</label>
-                    <input type="password" name="re-password" class="form_login" placeholder="Masukkan Kembali Password" required>
+                    <input type="password" name="re-password" class="form-control" placeholder="Masukkan Kembali Password" required>
+                </div>
+                <div class="form-group">
+                    <label>Alamat Pengiriman</label>
+                    <input type="text" name="alamat" class="form-control" placeholder="Masukkan Alamat Pengiriman" required>
+                </div>
+                <div class="form-group">
                     <label for="role">Mendaftar Sebagai</label>
                     <br>
-                    <select name="role" id="role" required>
-                      <option value="Konsultan">Konsultan</option>
-                      <option value="Pelanggan">Pelanggan</option>
+                    <select name="role" id="role" style="width:100%;height:40px" required>
+                    <option value="Konsultan">Konsultan</option>
+                    <option value="Pelanggan">Pelanggan</option>
                     </select>
                     <br><br>
-                    <input type="submit" class="buttonLogin" value="LOGIN">
-                </form>
-            </div>
-        <div>
+                </div>                    
+                <input type="submit" class="buttonLogin" value="LOGIN">
+             </form>
+        </div>
     <div>
     <footer></footer>
 </body>

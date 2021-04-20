@@ -8,13 +8,12 @@ class konsultan_model extends CI_Model{
     }
 
     function insertData($data){
-        return $this->db->insert('pelanggan',$data);
+        return $this->db->insert('konsultan',$data);
     }
 
-    function cekDataVerifikasi($nama,$email){
-        $this->db->where('nama_pelanggan',$nama);
-        $this->db->where('email_pelanggan',$email);
-        $query = $this->db->get('user');
+    function cekData($email){
+        $this->db->where('email_konsultan',$email);
+        $query = $this->db->get('konsultan');
         if($query->num_rows() > 0){  
             return true;  
         }  
@@ -24,9 +23,16 @@ class konsultan_model extends CI_Model{
     }
 
     function getData($nama, $email){
-        $this->db->where('nama_pelanggan',$nama);
-        $this->db->where('email_pelanggan',$email);
-        return $this->db->get('user')->result_array();
+        $this->db->where('nama_konsultan',$nama);
+        $this->db->where('email_konsultan',$email);
+        return $this->db->get('konsultan')->result_array();
+    }
+
+    function getNama($email,$idUser){
+        $this->db->select('nama_konsultan');
+        $this->db->where('email_konsultan',$email);
+        $this->db->where('id_user',$idUser);
+        return $this->db->get('konsultan')->row()->nama_konsultan;
     }
 }
 

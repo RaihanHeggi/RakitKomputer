@@ -11,10 +11,9 @@ class pelanggan_model extends CI_Model{
         return $this->db->insert('pelanggan',$data);
     }
 
-    function cekDataVerifikasi($nama,$email){
-        $this->db->where('nama_pelanggan',$nama);
+    function cekData($email){
         $this->db->where('email_pelanggan',$email);
-        $query = $this->db->get('user');
+        $query = $this->db->get('pelanggan');
         if($query->num_rows() > 0){  
             return true;  
         }  
@@ -26,7 +25,14 @@ class pelanggan_model extends CI_Model{
     function getData($nama, $email){
         $this->db->where('nama_pelanggan',$nama);
         $this->db->where('email_pelanggan',$email);
-        return $this->db->get('user')->result_array();
+        return $this->db->get('pelanggan')->result_array();
+    }
+
+    function getNama($email,$idUser){
+        $this->db->select('nama_pelanggan');
+        $this->db->where('email_pelanggan',$email);
+        $this->db->where('id_user',$idUser);
+        return $this->db->get('pelanggan')->row()->nama_pelanggan;
     }
 }
 

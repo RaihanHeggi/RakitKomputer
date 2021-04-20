@@ -22,13 +22,15 @@ class RegisterController extends CI_Controller {
 	}
 
 	public function registerData(){
+		$nama = $this->input->post('nama');
 		$email = $this->input->post('email'); 
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$rePassword = $this->input->post('re-password');
 		$role = $this->input->post('role');
+		$alamat = $this->input->post('alamat');
 
-		if($email != NULL && $username != NULL && $password != NULL && $role != NULL){
+		if($nama != NULL && $email != NULL && $username != NULL && $password != NULL && $role != NULL && $alamat != NULL){
 			if(!$this->user->cekData($username,$email))
 			{
 				if($password == $rePassword){
@@ -38,14 +40,38 @@ class RegisterController extends CI_Controller {
 						'email' => $email
 					);
 					$this->user->insertData($dataUser);
+					$userID = $this->user->getID($username,$email);
+					if ($role == "Konsultan"){
+						$dataKonsultan = array(
+							'nama_konsultan' => $nama,
+							'alamat_konsultan' => $alamat,
+							'email_konsultan' => $email,
+							'id_user' => $userID
+						);
+						$this->konsultan->insertData($dataKonsultan);
+						$this->session->set_flashdata('error_messages',' <div><label for="Alert" style="color:green">Silahkan Melakukan Login</label></div>');
+					}else if ($role == "Pelanggan"){
+						$dataPelanggan = array(
+							'nama_pelanggan' => $nama,
+							'alamat_pelanggan' => $alamat,
+							'email_pelanggan' => $email,
+							'id_user' => $userID
+						);
+						$this->pelanggan->insertData($dataKonsultan);
+						$this->session->set_flashdata('error_messages',' <div><label for="Alert" style="color:green">Silahkan Melakukan Login</label></div>');
+					}
+					redirect('halaman_register');
 				}else{
-					echo "PASSWORD TIDAK SAMA";
+					$this->session->set_flashdata('error_messages',' <div><label for="Alert" style="color:red">Password Tidak Sama</label></div>');
+					redirect('halaman_register');
 				}
 			}else{
-				echo "EMAIL ATAU PASSWORD SUDAH TERDAFTAR";
+				$this->session->set_flashdata('error_messages',' <div><label for="Alert" style="color:red">User Sudah Pernah Mendaftar</label></div>');
+					redirect('halaman_register');
 			}
 		}else{
-			echo "INPUT TIDAK BOLEH NULL";
+			$this->session->set_flashdata('error_messages',' <div><label for="Alert" style="color:red">Input Harus Diisi</label></div>');
+			redirect('halaman_register');
 		}
 	}
 }
