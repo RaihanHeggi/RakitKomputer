@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>RakitKomputer - Admin</title>
+  <title>Rakit Komputer - Admin</title>
   <!-- Bootstrap core CSS-->
   <link href="<?php echo $this->config->item('base_url'); ?>/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -1065,7 +1065,7 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © Your Website 2017</small>
+          <small>Copyright © Rakit Komputer</small>
         </div>
       </div>
     </footer>
