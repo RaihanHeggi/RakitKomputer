@@ -7,4 +7,8 @@ class AdminController extends CI_Controller {
 	{
 		$this->load->view('admin/indexAdmin');
 	}
+
+	public function cekBarang(){
+		$this->load->view('admin/indexBarang');
+	}
 }
