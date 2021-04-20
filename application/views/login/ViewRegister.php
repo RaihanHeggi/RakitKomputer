@@ -1,69 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
-  <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+	<title>Register Form</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url');?>/assets/css/style.css">
 </head>
-
-<body class="bg-dark">
-  <div class="container">
-    <div class="card card-register mx-auto mt-5">
-      <div class="card-header">Register an Account</div>
-      <div class="card-body">
-        <form>
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-6">
-                <label for="exampleInputName">First name</label>
-                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
-              </div>
-              <div class="col-md-6">
-                <label for="exampleInputLastName">Last name</label>
-                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
-          </div>
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-6">
-                <label for="exampleInputPassword1">Password</label>
-                <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
-              </div>
-              <div class="col-md-6">
-                <label for="exampleConfirmPassword">Confirm password</label>
-                <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password">
-              </div>
-            </div>
-          </div>
-          <a class="btn btn-primary btn-block" href="login.html">Register</a>
-        </form>
-        <div class="text-center">
-          <a class="d-block small mt-3" href="login.html">Login Page</a>
-          <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+<body class="bodyLogin">  
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark pt-3 pb-3 ">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">    
+                    <a class="nav-link" href="#">Logo Place</a>
+                </li>
+            </ul>
         </div>
-      </div>
-    </div>
-  </div>
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="<?= site_url('halaman_index') ?>">Rakit Komputer</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="<?= site_url('login') ?>">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="grid">
+        <h1 id="LoginHeader">Menu Register</h1>
+        <div class="login_card">
+            <div class="form-group">
+                <?php echo $this->session->flashdata('error_messages'); ?>
+            </div>
+            <form action="<?= site_url('RegisterController/registerData') ?>" method="post">
+                <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" name="email" class="form-control" placeholder="Masukkan Email" required>
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" placeholder="Masukkan Username" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Masukkan Password" required>
+                </div>
+                <div class="form-group">
+                    <label>Re-Password</label>
+                    <input type="password" name="re-password" class="form-control" placeholder="Masukkan Kembali Password" required>
+                </div>
+                <div class="form-group">
+                    <label>Alamat Pengiriman</label>
+                    <input type="text" name="alamat" class="form-control" placeholder="Masukkan Alamat Pengiriman" required>
+                </div>
+                <div class="form-group">
+                    <label for="role">Mendaftar Sebagai</label>
+                    <br>
+                    <select name="role" id="role" style="width:100%;height:40px" required>
+                    <option value="Konsultan">Konsultan</option>
+                    <option value="Pelanggan">Pelanggan</option>
+                    </select>
+                    <br><br>
+                </div>                    
+                <input type="submit" class="buttonLogin" value="LOGIN">
+             </form>
+        </div>
+    <div>
+    <footer></footer>
 </body>
-
 </html>

@@ -26,6 +26,15 @@ h1 {
 	box-shadow: 5px 5px 20px;
 }
 
+.register_card {
+	width: 100%;
+	background: white;
+	margin: 20px auto;
+	padding: 40px 30px;
+	border-radius: 5px;
+	box-shadow: 5px 5px 20px;
+}
+
 label {
 	font-size: 11pt;
 }
@@ -43,6 +52,16 @@ label {
 	color: white;
 	font-size: 11pt;
 	width: 100%;
+	border: none;
+	border-radius: 3px;
+	padding: 10px 20px;
+}
+
+.buttonRegister {
+	background: #4685de;
+	color: white;
+	font-size: 11pt;
+	width: 80%;
 	border: none;
 	border-radius: 3px;
 	padding: 10px 20px;

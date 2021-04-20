@@ -22,7 +22,7 @@
             </ul>
         </div>
         <div class="mx-auto order-0">
-            <a class="navbar-brand mx-auto" href="<?= site_url('halaman_index') ?>">Rakit Komputer</a>
+            <a class="navbar-brand mx-auto" href="<?= site_url('KonsultanController') ?>">Rakit Komputer</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -30,11 +30,12 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('login') ?>">Login</a>
+                    <a class="nav-link" href="<?= site_url('halaman_index') ?>">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
 
+    <h1>SELAMAT DATANG DI HALAMAN KONSULTAN</h1>
 </body>
 </html>
