@@ -34,7 +34,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Barang">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?= site_url('data_barang') ?>">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Barang</span>
           </a>
