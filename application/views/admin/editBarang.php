@@ -16,6 +16,7 @@
   <link href="<?php echo $this->config->item('base_url'); ?>/assets/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="<?php echo $this->config->item('base_url'); ?>/assets/css/sb-admin.css" rel="stylesheet">
+  
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -212,53 +213,44 @@
         <li class="breadcrumb-item">
           <a href="<?= site_url('index_admin')?>">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Data Barang</li>
+        <li class="breadcrumb-item">
+            <a href="<?= site_url('data_barang')?>">Data Barang</a>
+        </li>
+        <li class="breadcrumb-item active">Edit Data Barang</li>
       </ol>
-      <div>
-        <a class="btn btn-primary mr-3 mb-3" href="<?= site_url('tambah_barang') ?>" role="button">Tambah Data Barang</a>
-      </div>
-      <div class="row">
-        <div class="col-12">
-        <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-table"></i> Data Barang Di Inventory</div>
-            <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                        <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nama Barang</th>
-                        <th scope="col">Tipe Barang</th>
-                        <th scope="col">Merk Barang</th>
-                        <th scope="col">Harga Barang</th>
-                        <th scope="col">Stok Barang</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody id="target">
-                        <tr>
-                        <?php foreach($data_barang as $db) : ?>
-                            <th scope="row"><?= $db['id_barang']?></th>
-                            <th scope="row"><?= $db['nama_barang']?></th>
-                            <th scope="row"><?= $db['tipe_barang']?></th>
-                            <th scope="row"><?= $db['merk_barang']?></th>
-                            <th scope="row"><?= $db['harga_barang']?></th>
-                            <th scope="row"><?= $db['stok_barang']?></th>
-                            <td><a class="btn btn-primary" href="<?= site_url('AdminController/editBarang/'.$db['id_barang'])?>" type="submit" style="border-radius: 10px;">Edit</a></td>
-                            <td><a class="btn btn-danger" href="<?=  site_url('#'.$db['id_barang']) ?>" type="submit" style="border-radius: 10px;">Delete</a></td></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>                   
-                </table>
+      <div class="ml-4 mr-4">
+        <h1 class="mb-5">Form Edit Data Barang</h1>
+        <form action="" method="post">
+            <?php foreach($data_barang as $db) : ?>
+            <div class="form-group">
+                <label for="idbarang" style="font-weight:bold">ID BARANG</label>
+                <input type="text" class="form-control" id="idbarang" placeholder="<?= $db['id_barang'] ?>" required>
             </div>
+            <div class="form-group">
+                <label for="namabarang" style="font-weight:bold">NAMA BARANG</label>
+                <input type="text" class="form-control" id="namabarang" placeholder="<?= $db['nama_barang']?>" required>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
-        </div>
-        </div>
+            <div class="form-group">
+                <label for="tipebarang" style="font-weight:bold">TIPE BARANG</label>
+                <input type="text" class="form-control" id="tipebarang" placeholder="<?= $db['tipe_barang']?>" required>
+            </div>
+            <div class="form-group">
+                <label for="merkbarang" style="font-weight:bold">MERK BARANG</label>
+                <input type="text" class="form-control" id="merkbarang" placeholder="<?= $db['merk_barang']?>" required>
+            </div>
+            <div class="form-group">
+                <label for="hargabarang" style="font-weight:bold">HARGA BARANG</label>
+                <input type="text" class="form-control" id="hargabarang" placeholder="<?= $db['harga_barang']?>" required>
+            </div>
+            <div class="form-group">
+                <label for="stokbarang" style="font-weight:bold">STOK BARANG</label>
+                <input type="text" class="form-control" id="stokbarang" placeholder="<?= $db['stok_barang']?>" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-3" style="width:100%">Submit</button>
+        </form>
+        <?php endforeach; ?>
       </div>
+
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
@@ -290,7 +282,7 @@
           </div>
         </div>
       </div>
-    </div>>
+    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="<?php echo $this->config->item('base_url'); ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo $this->config->item('base_url'); ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
