@@ -57,7 +57,7 @@ class RegisterController extends CI_Controller {
 							'email_pelanggan' => $email,
 							'id_user' => $userID
 						);
-						$this->pelanggan->insertData($dataKonsultan);
+						$this->pelanggan->insertData($dataPelanggan);
 						$this->session->set_flashdata('error_messages',' <div><label for="Alert" style="color:green">Silahkan Melakukan Login</label></div>');
 					}
 					redirect('halaman_register');
