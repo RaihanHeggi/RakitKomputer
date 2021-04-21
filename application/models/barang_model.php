@@ -19,6 +19,11 @@ class barang_model extends CI_Model{
         $this->db->where('id_barang',$id);
         return $this->db->get('barang')->result_array();
     }
+
+    public function updateBarang($id_barang, $data) {
+		$this->db->where('id_barang', $id_barang);
+		return $this->db->update('barang', $data);
+	}
 }
 
 ?>
