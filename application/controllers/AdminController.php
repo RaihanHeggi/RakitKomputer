@@ -28,6 +28,8 @@ class AdminController extends CI_Controller {
 	public function editBarang($id){
 		$data['data_barang'] = $this->barang->getData($id);
 		$this->load->view('admin/editBarang',$data);
-
 	}
+
+
+	
 }
