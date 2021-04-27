@@ -28,6 +28,12 @@ class pelanggan_model extends CI_Model{
         return $this->db->get('pelanggan')->result_array();
     }
 
+    function getDataUser($nama, $email){
+        $this->db->where('nama_pelanggan',$nama);
+        $this->db->where('email_pelanggan',$email);
+        return $this->db->get('pelanggan')->row_array();
+    }
+
     function getNama($email,$idUser){
         $this->db->select('nama_pelanggan');
         $this->db->where('email_pelanggan',$email);

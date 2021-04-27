@@ -57,5 +57,6 @@ $route['halaman_register'] = 'RegisterController';
 $route['proses_login'] = 'LoginController/loginStep';
 $route['data_barang'] = 'AdminController/cekBarang';
 $route['tambah_barang'] = 'AdminController/tambahBarang';
+$route['halaman_pesanan'] = 'IndexController/pesananMenu';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
