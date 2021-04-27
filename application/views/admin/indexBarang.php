@@ -239,17 +239,16 @@
                     </thead>
                     <tbody id="target">
                         <tr>
-                        <?php foreach($data_barang as $db) : ?>
-                            <th scope="row"><?= $db['id_barang']?></th>
-                            <th scope="row"><?= $db['nama_barang']?></th>
-                            <th scope="row"><?= $db['tipe_barang']?></th>
-                            <th scope="row"><?= $db['merk_barang']?></th>
-                            <th scope="row"><?= $db['harga_barang']?></th>
-                            <th scope="row"><?= $db['stok_barang']?></th>
+                          <tr><?php foreach($data_barang as $db) : ?>
+                            <td scope="row"><?= $db['id_barang']?></td>
+                            <td scope="row"><?= $db['nama_barang']?></td>
+                            <td scope="row"><?= $db['tipe_barang']?></td>
+                            <td scope="row"><?= $db['merk_barang']?></td>
+                            <td scope="row"><?= $db['harga_barang']?></td>
+                            <td scope="row"><?= $db['stok_barang']?></td>
                             <td><a class="btn btn-primary" href="<?= site_url('AdminController/editBarang/'.$db['id_barang'])?>" type="submit" style="border-radius: 10px;">Edit</a></td>
                             <td><a class="btn btn-danger" href="<?=  site_url('#'.$db['id_barang']) ?>" type="submit" style="border-radius: 10px;">Delete</a></td></td>
-                        </tr>
-                        <?php endforeach; ?>
+                          </tr><?php endforeach; ?>
                     </tbody>                   
                 </table>
             </div>

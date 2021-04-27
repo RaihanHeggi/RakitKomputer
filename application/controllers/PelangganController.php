@@ -5,6 +5,6 @@ class PelangganController extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('pelanggan/PelangganController');
+		$this->load->view('pelanggan/ViewPelanggan');
 	}
 }

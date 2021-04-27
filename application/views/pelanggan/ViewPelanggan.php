@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url');?>/assets/css/style.css">
+    <link href="<?php echo $this->config->item('base_url'); ?>/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -30,6 +31,9 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= site_url('halaman_pesanan') ?>"><i class="fa fa-shopping-cart"></i></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('halaman_index') ?>">Logout</a>
                 </li>
             </ul>
@@ -37,5 +41,6 @@
     </nav>
 
     <h1>SELAMAT DATANG DI HALAMAN PELANGGAN</h1>
+    <a><?php echo $this->session->userdata('nama') ?></a>
 </body>
 </html>

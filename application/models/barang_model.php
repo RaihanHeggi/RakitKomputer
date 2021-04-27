@@ -20,6 +20,11 @@ class barang_model extends CI_Model{
         return $this->db->get('barang')->result_array();
     }
 
+	public function getNamaBarang($id){
+        $this->db->where('id_barang',$id);
+        return $this->db->get('barang')->row()->nama_barang;
+    }
+
     //Fungsi Sudah Disiapkan 
     public function createBarang($data) {
 		return $this->db->insert('user', $data);
