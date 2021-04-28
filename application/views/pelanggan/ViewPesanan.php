@@ -98,7 +98,7 @@
                         </div>
                     <div class="modal-footer">
                         <button class="btn btn-info" type="submit"> Simpan&nbsp;</button>
-                        <button type="button" class="btn btn-warning" data-dismiss="modal"> Batal</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"> Batal</button>
                     </div>
                     </form>
                 </div>
