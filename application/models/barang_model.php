@@ -51,12 +51,6 @@ class barang_model extends CI_Model{
 		return $this->db->deletes('barang');
 	}
 
-	public function getId($id_barang) {
-		$this->db->select('*');
-		$this->db->where('id_barang', $id_barang);
-		return $this->db->get('barang');
-	}
-
 	public function getSpecificNama($id_barang) {
 		$this->db->select('namaBarang');
 		$this->db->where('id_barang', $id_barang);
@@ -98,12 +92,6 @@ class barang_model extends CI_Model{
 
 	public function getAllHarga() {
 		$this->db->select('hargaBarang');
-		return $this->db->get('barang');
-	}
-
-	public function getSpecificStok($id_barang) {
-		$this->db->select('stokBarang');
-		$this->db->where('id_barang', $id_barang);
 		return $this->db->get('barang');
 	}
 
