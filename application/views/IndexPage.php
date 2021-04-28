@@ -35,6 +35,23 @@
             </ul>
         </div>
     </nav>
-
+    <div class="jumbotron">
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p></p>
+        <p></p>
+    </div>
+    <div class="mx-auto mt-2" style="width: 18rem;">
+        <h1>SELAMAT DATANG DI RAKIT KOMPUTER</h1>
+    </div>
+    
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Rakit Komputer</small>
+        </div>
+      </div>
+    </footer>
 </body>
-</html>
+</html> 
