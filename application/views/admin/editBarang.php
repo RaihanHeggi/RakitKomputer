@@ -15,8 +15,7 @@
         <form action="" method="post">
             <?php foreach($data_barang as $db) : ?>
             <div class="form-group">
-                <label for="idbarang" style="font-weight:bold">ID BARANG</label>
-                <input type="text" class="form-control" id="idbarang" placeholder="<?= $db['id_barang'] ?>" required>
+                <input type="hidden" class="form-control" id="idbarang" value="<?= $db['id_barang'] ?>">
             </div>
             <div class="form-group">
                 <label for="namabarang" style="font-weight:bold">NAMA BARANG</label>
