@@ -25,6 +25,17 @@ class barang_model extends CI_Model{
         return $this->db->get('barang')->row()->nama_barang;
     }
 
+	public function getStokData($id){
+        $this->db->where('id_barang',$id);
+        return $this->db->get('barang')->row()->stok_barang;
+    }
+
+	function updateData($id,$data){
+        $this->db->where('id_barang',$id);
+        return $this->db->update('barang',$data);
+    }
+
+
     //Fungsi Sudah Disiapkan 
     public function createBarang($data) {
 		return $this->db->insert('user', $data);
