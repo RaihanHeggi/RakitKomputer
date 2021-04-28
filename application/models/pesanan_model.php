@@ -16,6 +16,11 @@ class pesanan_model extends CI_Model{
         return $this->db->get('pesanan')->result_array();
     }
 
+    function getPesanan($idPesanan){
+        $this->db->where('id_pesanan',$idPesanan);
+        return $this->db->get('pesanan')->row_array();
+    }
+
     function updateData($id,$data){
         $this->db->where('id_pesanan',$id);
         return $this->db->update('pesanan',$data);
