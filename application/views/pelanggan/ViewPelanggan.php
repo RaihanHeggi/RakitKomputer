@@ -41,6 +41,5 @@
     </nav>
 
     <h1>SELAMAT DATANG DI HALAMAN PELANGGAN</h1>
-    <a><?php echo $this->session->userdata('nama') ?></a>
 </body>
 </html>
