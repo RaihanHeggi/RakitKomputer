@@ -22,13 +22,13 @@ class LoginController extends CI_Controller {
 	}
 
 	public function loginProses($email,$password,$idUser){
-		$isUser = $this->pelanggan->cekData($email); 
+		$isUser = $this->pelanggan->cekData($idUser); 
 		//$isAdmin = $this->admin_model->cekData($nama,$password);
-		$isKonsultan = $this->konsultan->cekData($email);
+		$isKonsultan = $this->konsultan->cekData($idUser);
 		//$isManajer = $this->manajer_model->cekData($nama,$password);
 		$statusLogin = "";
 		if($isUser){
-			$nama_user = $this->pelanggan->getNama($email,$idUser);
+			$nama_user = $this->pelanggan->getNama($idUser);
 			$data_session = array(
 				'email' => $email,
 				'password' => $password,
@@ -42,7 +42,7 @@ class LoginController extends CI_Controller {
 			//$this->session->set_userdata("Status", "Admin");
 			//redirect('HomeControllerAdminr');
 		}else if($isKonsultan){
-			$nama_user = $this->konsultan->getNama($email,$idUser);
+			$nama_user = $this->konsultan->getNama($idUser);
 			$data_session = array(
 				'email' => $email,
 				'password' => $password,

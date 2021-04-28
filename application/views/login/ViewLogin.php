@@ -32,7 +32,7 @@
     <div class="grid">
         <div class="grid-left">
             <div class = "foto">
-                <img src="<?php echo $this->config->item('base_url'); ?>/assets/img/loginBackground.jpg">
+                <img  class="foto" src="<?php echo $this->config->item('base_url'); ?>/assets/img/loginBackground.jpg">
             </div>
         </div>
         <div class="grid-right">

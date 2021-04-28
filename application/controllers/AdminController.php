@@ -28,7 +28,7 @@ class AdminController extends CI_Controller {
 	}
 
 	public function editBarang($id){
-		$data['main_content'] = 'admin/tambahBarang';
+		$data['main_content'] = 'admin/editBarang';
 		$data['data_barang'] = $this->barang->getData($id);
 		$this->load->view('template/adminTemplate',$data);
 	}
@@ -51,23 +51,23 @@ class AdminController extends CI_Controller {
 		$this->load->view('admin/indexBarang',$data);
 	}
 
-	public function tambahBarang(){
+	public function tambahBarang2(){
 		$this->load->view('admin/tambahBarang');
 	}
 
-	public function editBarang($id){
+	public function editBarang2($id){
 		$data['data_barang'] = $this->barang->getData($id);
 		$this->load->view('admin/editBarang',$data);
 	}
 
-	public function funcEditBarang($id_barang){
-		$data = array {
-			'nama_barang' => $this->input->post('nama_barang')
-			'tipe_barang' => $this->input->post('tipe_barang')
-			'merk_barang' => $this->input->post('merk_barang')
-			'harga_barang' => $this->input->post('harga_barang')
+	public function funcEditBarang2($id_barang){
+		$data = array (
+			'nama_barang' => $this->input->post('nama_barang'),
+			'tipe_barang' => $this->input->post('tipe_barang'),
+			'merk_barang' => $this->input->post('merk_barang'),
+			'harga_barang' => $this->input->post('harga_barang'),
 			'stok_barang' => $this->input->post('stok_barang')
-		};
+		);
 		$cek = $this->barang_model->updateBarang($id_barang, $data);
 		if ($cek) $this->session->set_flashdata('info', '<div><label for="Alert" style="color:green">Data Berhasil Diubah</label></div>');
 		else $this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">

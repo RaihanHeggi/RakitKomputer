@@ -11,8 +11,8 @@ class konsultan_model extends CI_Model{
         return $this->db->insert('konsultan',$data);
     }
 
-    function cekData($email){
-        $this->db->where('email_konsultan',$email);
+    function cekData($idUser){
+        $this->db->where('id_user',$idUser);
         $query = $this->db->get('konsultan');
         if($query->num_rows() > 0){  
             return true;  
@@ -28,9 +28,8 @@ class konsultan_model extends CI_Model{
         return $this->db->get('konsultan')->result_array();
     }
 
-    function getNama($email,$idUser){
+    function getNama($idUser){
         $this->db->select('nama_konsultan');
-        $this->db->where('email_konsultan',$email);
         $this->db->where('id_user',$idUser);
         return $this->db->get('konsultan')->row()->nama_konsultan;
     }
