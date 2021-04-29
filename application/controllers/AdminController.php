@@ -9,6 +9,7 @@ class AdminController extends CI_Controller {
 		$this->load->model('barang_model','barang');
 		$this->load->model('pelanggan_model','pelanggan');
 		$this->load->model('user_model', 'user');
+		$this->load->model('konsultan_model','konsultan');
 		#$this->load->model("admin","admin_model");
         $this->load->helper('url');  
     }
@@ -87,6 +88,27 @@ class AdminController extends CI_Controller {
 			);
 		};
 		$data['data_pelanggan'] = $dataKirim;
+		$this->load->view('template/adminTemplate',$data);
+	}
+
+
+	//Fungsionalitas Data Konsultan 
+	public function cekKonsultan(){
+		$data['main_content'] = 'admin/indexDataKonsultan';
+		$dataKonsultan = $this->konsultan->getAllData();
+		$dataKirim = array();
+		foreach ($dataKonsultan as $dp){
+			$dataUser = $this->user->getDataById($dp['id_user']);
+			array_push($dataKirim, array(
+					'id' => $dp['id_konsultan'],
+					'nama' => $dp['nama_konsultan'],
+					'username' => $dataUser['username'],
+					'email' => $dataUser['email'],
+					'alamat' => $dp['alamat_konsultan']
+				)
+			);
+		};
+		$data['data_konsultan'] = $dataKirim;
 		$this->load->view('template/adminTemplate',$data);
 	}
 

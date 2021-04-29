@@ -33,6 +33,10 @@ class konsultan_model extends CI_Model{
         $this->db->where('id_user',$idUser);
         return $this->db->get('konsultan')->row()->nama_konsultan;
     }
+
+    function getAllData(){
+        return $this->db->get('konsultan')->result_array();
+    }
 }
 
 ?>
