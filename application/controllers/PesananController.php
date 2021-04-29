@@ -23,7 +23,7 @@ class PesananController extends CI_Controller {
         $dataPencarianBarang = $this->barang->getStokData($dataPesan['id_barang']);
         $data = array(
             'metode_pembayaran' => $metodePembayaran,
-           'status' => 'SUDAH BAYAR'
+            'status' => 'SUDAH BAYAR'
         );
         $dataBarang = array(
             'stok_barang' => $dataPencarianBarang-1

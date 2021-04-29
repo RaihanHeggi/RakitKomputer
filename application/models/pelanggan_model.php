@@ -39,6 +39,10 @@ class pelanggan_model extends CI_Model{
         $this->db->where('id_user',$idUser);
         return $this->db->get('pelanggan')->row()->nama_pelanggan;
     }
+
+    function getAllData(){
+        return $this->db->get('pelanggan')->result_array();
+    }
 }
 
 ?>

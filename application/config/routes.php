@@ -60,5 +60,6 @@ $route['tambah_barang'] = 'AdminController/tambahBarang';
 $route['halaman_pesanan'] = 'IndexController/pesananMenu';
 $route['halaman_pelanggan'] = 'PelangganController';
 $route['barang'] = 'BarangController';
+$route['data_pelanggan'] = 'AdminController/cekPelanggan';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
