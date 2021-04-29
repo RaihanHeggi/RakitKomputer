@@ -7,6 +7,8 @@ class AdminController extends CI_Controller {
     {
 		parent::__construct();
 		$this->load->model('barang_model','barang');
+		$this->load->model('pelanggan_model','pelanggan');
+		$this->load->model('user_model', 'user');
 		#$this->load->model("admin","admin_model");
         $this->load->helper('url');  
     }
@@ -16,6 +18,7 @@ class AdminController extends CI_Controller {
 		$this->load->view('admin/indexAdmin');
 	}
 
+	//Fungsionalitas Barang 
 	public function cekBarang(){
 		$data['main_content'] = 'admin/indexBarang';
 		$data['data_barang'] = $this->barang->getAllData();
@@ -51,15 +54,6 @@ class AdminController extends CI_Controller {
 		$this->load->view('admin/indexBarang',$data);
 	}
 
-	public function tambahBarang2(){
-		$this->load->view('admin/tambahBarang');
-	}
-
-	public function editBarang2($id){
-		$data['data_barang'] = $this->barang->getData($id);
-		$this->load->view('admin/editBarang',$data);
-	}
-
 	public function funcEditBarang2($id_barang){
 		$data = array (
 			'nama_barang' => $this->input->post('nama_barang'),
@@ -74,6 +68,26 @@ class AdminController extends CI_Controller {
 		Data Gagal Diubah </div>');
 		$data['data_barang'] = $this->barang->getAllData();
 		$this->load->view('admin/indexBarang',$data);
+	}
+
+	//Fungsionalitas Data Pelanggan 
+	public function cekPelanggan(){
+		$data['main_content'] = 'admin/indexDataPelanggan';
+		$dataPelanggan = $this->pelanggan->getAllData();
+		$dataKirim = array();
+		foreach ($dataPelanggan as $dp){
+			$dataUser = $this->user->getDataById($dp['id_user']);
+			array_push($dataKirim, array(
+					'id' => $dp['id_pelanggan'],
+					'nama' => $dp['nama_pelanggan'],
+					'username' => $dataUser['username'],
+					'email' => $dataUser['email'],
+					'alamat' => $dp['alamat_pelanggan']
+				)
+			);
+		};
+		$data['data_pelanggan'] = $dataKirim;
+		$this->load->view('template/adminTemplate',$data);
 	}
 
 	
