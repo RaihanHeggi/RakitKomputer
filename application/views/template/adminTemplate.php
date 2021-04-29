@@ -50,6 +50,12 @@
 						<span class="nav-link-text">Pelanggan</span>
 					</a>
 				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+					<a class="nav-link" href="<?= site_url('data_konsultan') ?>">
+						<i class="fa fa-fw fa-table"></i>
+						<span class="nav-link-text">Konsultan</span>
+					</a>
+				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
 					<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
 						data-parent="#exampleAccordion">
