@@ -40,13 +40,13 @@
                             <td scope="row"><?= $db['harga_barang']?></td>
                             <td scope="row"><?= $db['stok_barang']?></td>
                             <td><a class="btn btn-primary" href="<?= site_url('AdminController/editBarang/'.$db['id_barang'])?>" type="submit" style="border-radius: 10px;">Edit</a></td>
-                            <td><a class="btn btn-danger" href="<?=  site_url('#'.$db['id_barang']) ?>" type="submit" style="border-radius: 10px;">Delete</a></td></td>
+                            <td><a class="btn btn-danger" href="<?=  site_url('AdminController/FuncDeleteData/'.$db['id_barang']) ?>" type="submit" style="border-radius: 10px;">Delete</a></td></td>
                           </tr><?php endforeach; ?>
                     </tbody>                   
                 </table>
             </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <div class="card-footer small text-muted"> <?php echo $this->session->flashdata('info'); ?></div>
         </div>
         </div>
         </div>
