@@ -35,6 +35,11 @@ class barang_model extends CI_Model{
         return $this->db->update('barang',$data);
     }
 
+	public function hapusBarang($id_barang) {
+		$this->db->where('id_barang', $id_barang);
+		return $this->db->delete('barang');
+	}
+
 
     //Fungsi Sudah Disiapkan 
     public function createBarang($data) {
@@ -46,10 +51,7 @@ class barang_model extends CI_Model{
 		return $this->db->update('barang', $data);
 	}
 
-	public function deleteUser($id_barang) {
-		$this->db->where('id_barang', $id_barang);
-		return $this->db->deletes('barang');
-	}
+
 
 	public function getSpecificNama($id_barang) {
 		$this->db->select('namaBarang');

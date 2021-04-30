@@ -261,7 +261,7 @@
 				</div>
 			</div>
 		</div>
-	</div>>
+	</div>
 	<!-- Bootstrap core JavaScript-->
 	<script src="<?php echo $this->config->item('base_url'); ?>/assets/vendor/jquery/jquery.min.js"></script>
 	<script src="<?php echo $this->config->item('base_url'); ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js">
