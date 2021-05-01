@@ -50,4 +50,9 @@ class IndexController extends CI_Controller {
 		}
 		
 	}
+
+	public function updateAdmin(){
+		$data['main_content'] = 'admin/tambahDataAdmin';
+		$this->load->view('template/adminTemplate',$data);
+	}
 }

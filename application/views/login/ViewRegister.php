@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" name="email" class="form-control" placeholder="Masukkan Email" required>
+                    <input type="email" name="email" class="form-control" placeholder="Masukkan Email" required>
                 </div>
                 <div class="form-group">
                     <label>Username</label>

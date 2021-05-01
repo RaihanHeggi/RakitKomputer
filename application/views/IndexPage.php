@@ -36,14 +36,14 @@
         </div>
     </nav>
     <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <h1 class="display-4">Hello, There!</h1>
+        <p class="text-center lead" style="font-size:25px">Selamat Berbelanja Di Website Kami</p>
         <hr class="my-4">
         <p></p>
         <p></p>
     </div>
-    <div class="mx-auto mt-2" style="width: 18rem;">
-        <h1>SELAMAT DATANG DI RAKIT KOMPUTER</h1>
+    <div class="mx-auto mt-2" style="width: 40 rem;font-family: proxima_nova,Helvetica Neue,Helvetica,Arial,sans-serif;">
+        <h1 style="font-size:80px">SELAMAT DATANG DI RAKIT KOMPUTER</h1>
     </div>
     
     <footer class="sticky-footer">
