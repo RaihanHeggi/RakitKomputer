@@ -8,9 +8,9 @@ class RegisterController extends CI_Controller {
 		parent::__construct();
         $this->load->model("user_model","user");
 		$this->load->model("pelanggan_model","pelanggan");
-		#$this->load->model("admin","admin_model");
+		$this->load->model("admin_model","admin");
 		$this->load->model("konsultan_model","konsultan");
-		#$this->load->model("manajer","manajer_model");
+		$this->load->model("manajer_model","manajer");
         #$this->load->model('modelRS');  
         #$this->load->model('LoginModel');
         $this->load->helper('url');  
@@ -59,6 +59,24 @@ class RegisterController extends CI_Controller {
 						);
 						$this->pelanggan->insertData($dataPelanggan);
 						$this->session->set_flashdata('error_messages',' <div><label for="Alert" style="color:green">Silahkan Melakukan Login</label></div>');
+					}else if ($role == "Manajer"){
+						$dataManajer = array(
+							'nama_manajer' => $nama,
+							'alamat_manajer' => $alamat,
+							'id_user' => $userID
+						);
+						$this->manajer->insertData($dataManajer);
+						$this->session->set_flashdata('info', '<div><label for="Alert" style="color:green">Data Berhasil Ditambahkan</label></div>');
+						redirect('tambah_data_admin');
+					}else if($role == "Admin"){
+						$dataAdmin = array(
+							'nama_admin' => $nama,
+							'alamat_admin' => $alamat,
+							'id_user' => $userID
+						);
+						$this->admin->insertData($dataAdmin);
+						$this->session->set_flashdata('info', '<div><label for="Alert" style="color:green">Data Berhasil Ditambahkan</label></div>');
+						redirect('tambah_data_admin');
 					}
 					redirect('halaman_register');
 				}else{
@@ -66,8 +84,12 @@ class RegisterController extends CI_Controller {
 					redirect('halaman_register');
 				}
 			}else{
+				if(($role == "Manajer" )||($role == "Admin")){
+					$this->session->set_flashdata('info', '<div><label for="Alert" style="color:red">Data User Sudah Ada</label></div>');
+					redirect('tambah_data_admin');
+				}				
 				$this->session->set_flashdata('error_messages',' <div><label for="Alert" style="color:red">User Sudah Pernah Mendaftar</label></div>');
-					redirect('halaman_register');
+				redirect('halaman_register');
 			}
 		}else{
 			$this->session->set_flashdata('error_messages',' <div><label for="Alert" style="color:red">Input Harus Diisi</label></div>');
