@@ -25,7 +25,8 @@ class IndexController extends CI_Controller {
 		$nama = $this->session->userdata('nama');
 		$email = $this->session->userdata('email');
 		if(($nama != NULL) && ($email != NULL)){
-			$dataPelanggan = $this->pelanggan->getDataUser($nama,$email);
+			$idUser = $this->user->getIDByEmail($email);
+			$dataPelanggan = $this->pelanggan->getDataUser($nama,$idUser);
 			$dataPesanan = $this->pesanan->getData($dataPelanggan['id_pelanggan']);
 			$dataBarang = array();
 			foreach ($dataPesanan as $dp){
@@ -54,5 +55,27 @@ class IndexController extends CI_Controller {
 	public function updateAdmin(){
 		$data['main_content'] = 'admin/tambahDataAdmin';
 		$this->load->view('template/adminTemplate',$data);
+	}
+
+	public function dataKonsultan(){
+		$data['data_konsultan'] = $this->konsultan->getAllData();
+		$this->load->view('pelanggan/ViewKonsultasi',$data);
+	}
+
+	public function formKonsultasi($id){
+		$nama = $this->session->userdata('nama');
+		$email = $this->session->userdata('email');
+		if(($nama != NULL) && ($email != NULL)){
+			$idUser = $this->user->getIDByEmail($email);
+			$dataPelanggan = $this->pelanggan->getDataUser($nama,$idUser);
+			$data['data'] = array(
+				'id_konsultan' => $id,
+				'id_pelanggan' => $dataPelanggan['id_pelanggan']
+			);
+			$this->load->view('pelanggan/FormKonsultasi',$data);
+		}else{
+			$this->session->set_flashdata('error_messages',' <div><label for="Alert" style="color:green">User Tidak Valid</label></div>');
+			redirect('halaman_pelanggan');
+		}
 	}
 }

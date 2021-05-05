@@ -28,9 +28,9 @@ class pelanggan_model extends CI_Model{
         return $this->db->get('pelanggan')->result_array();
     }
 
-    function getDataUser($nama, $email){
+    function getDataUser($nama, $idUser){
         $this->db->where('nama_pelanggan',$nama);
-        $this->db->where('email_pelanggan',$email);
+        $this->db->where('id_user',$idUser);
         return $this->db->get('pelanggan')->row_array();
     }
 

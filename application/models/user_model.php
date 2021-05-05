@@ -59,6 +59,12 @@ class user_model extends CI_Model{
         $this->db->where('password',$password);
         return $this->db->get('user')->row()->id_user;
     }
+
+    function getIDByEmail($email){
+        $this->db->select('id_user');
+        $this->db->where('email',$email);
+        return $this->db->get('user')->row()->id_user;
+    }
 }
 
 ?>
