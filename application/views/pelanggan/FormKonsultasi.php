@@ -15,7 +15,7 @@
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item">    
-                    <a class="nav-link" href="#">Logo Place </a>
+                    <a class="nav-link" href="#">Logo Place</a>
                 </li>
                 <li class="nav-item">    
                     <a class="nav-link" href="#">Left</a>
@@ -37,7 +37,7 @@
                     <a class="nav-link active" href="<?= site_url('tabel_konsultan') ?>">Konsultasi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('halaman_pesanan') ?>"><i class="fa fa-shopping-cart"></i></a>
+                    <a class="nav-link" href="<?= site_url('halaman_pesanan') ?>">Cart <i class="fa fa-shopping-cart"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
