@@ -40,6 +40,12 @@ class pelanggan_model extends CI_Model{
         return $this->db->get('pelanggan')->row()->nama_pelanggan;
     }
 
+    function getNamaPelanggan($id){
+        $this->db->select('nama_pelanggan');
+        $this->db->where('id_pelanggan',$id);
+        return $this->db->get('pelanggan')->row()->nama_pelanggan;
+    }
+
     function getAllData(){
         return $this->db->get('pelanggan')->result_array();
     }

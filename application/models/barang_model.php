@@ -49,6 +49,9 @@ class barang_model extends CI_Model{
 
 
 
+	
+
+
 
 
     //Fungsi Sudah Disiapkan 
@@ -60,8 +63,6 @@ class barang_model extends CI_Model{
 		$this->db->where('id_barang', $id_barang);
 		return $this->db->update('barang', $data);
 	}
-
-
 
 	public function getSpecificNama($id_barang) {
 		$this->db->select('namaBarang');

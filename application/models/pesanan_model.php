@@ -31,6 +31,17 @@ class pesanan_model extends CI_Model{
         return $this->db->update('pesanan',$data);
     }
 
+    function getTanggalData(){
+        $this->db->distinct();
+        $this->db->select('tanggal');
+        return $this->db->get('pesanan')->result_array();
+    }
+
+    function getDataSpecificTanggal($tanggal){
+        $this->db->where('tanggal',$tanggal);
+        return $this->db->get('pesanan')->result_array();
+    }
+
 
 }
 

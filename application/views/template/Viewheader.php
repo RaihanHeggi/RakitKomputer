@@ -18,12 +18,6 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#">Logo Place </a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Left</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="//codeply.com">Codeply</a>
-				</li>
 			</ul>
 		</div>
 		<div class="mx-auto order-0">

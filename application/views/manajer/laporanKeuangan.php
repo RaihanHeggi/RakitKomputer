@@ -3,9 +3,6 @@
 <head>
 	<title>Rakit Komputer</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url');?>/assets/css/style.css">
     <link href="<?php echo $this->config->item('base_url'); ?>/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -20,19 +17,13 @@
             </ul>
         </div>
         <div class="mx-auto order-0">
-            <a class="navbar-brand mx-auto" href="<?= site_url('PelangganController') ?>">Rakit Komputer</a>
+            <a class="navbar-brand mx-auto" href="<?= site_url('halaman_manajer') ?>">Rakit Komputer</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">        
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="<?= site_url('tabel_konsultan') ?>">Konsultasi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('halaman_pesanan') ?>">Cart <i class="fa fa-shopping-cart"></i></a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                         <i class="fa fa-fw fa-sign-out"></i>Logout
@@ -41,38 +32,53 @@
             </ul>
         </div>
     </nav>
+
+    <div class="content-wrapper">
+    <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fa fa-table"></i>  Konsultan Di Rakit Komputer</div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID Konsultan</th>
-                                    <th scope="col">Nama Konsultan</th>
-                                    <th scope="col">Konsultasi</th>
-                                </tr>   
-                                </thead>
-                                <tbody id="target">
-                                    <tr>
-                                        <tr><?php foreach($data_konsultan as $dp) : ?>
-                                            <td scope="row"><?= $dp['id_konsultan']?></td>
-                                            <td scope="row"><?= $dp['nama_konsultan']?></td> 
-                                            <td><a class="btn btn-primary" href="<?= site_url('IndexController/formKonsultasi/'.$dp['id_konsultan'])?>" type="submit" style="border-radius: 10px;">Sesi Konsultasi</a></td>
-                                        </tr><?php endforeach; ?>
-                                </tbody>                   
-                            </table>
-                        </div>
-                    </div>
+        <div class="card mt-3 mb-3">
+        <div class="card-header">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="<?= site_url('halaman_manajer')?>">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Data Harian</li>
+            </ol>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Metode Pembayaran</th>
+                                <th scope="col">Nama Barang</th>
+                                <th scope="col">Harga Barang</th>
+                                <th scope="col">Nama Pelanggan</th>
+                            </tr>   
+                        </thead>
+                        <tbody id="target">
+                            <tr>
+                            <tr><?php foreach($data_pesanan as $dp) : ?>
+                                <td scope="row"><?= $dp['id']?></td>
+                                <td scope="row"><?= $dp['Metode Pembayaran']?></td>
+                                <td scope="row"><?= $dp['Nama Barang']?></td>
+                                <td scope="row"><?= $dp['Harga Barang']?></td>
+                                <td scope="row"><?= $dp['Nama Pelanggan']?></td>
+                                </tr><?php endforeach; ?>
+                        </tbody>                   
+                    </table>
                 </div>
+                </div>
+                <div class="card-footer small text-muted"> <?php echo $this->session->flashdata('info'); ?></div>
             </div>
         </div>
+        </div>
+      </div>
     </div>
-    
-                                    
+    <!-- /.container-fluid-->
+
+
      <!-- Logout Modal-->
      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
