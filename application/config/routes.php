@@ -68,5 +68,6 @@ $route['tambah_data_barang'] = 'AdminController/FuncTambahBarang';
 $route['tambah_data_admin'] = 'IndexController/updateAdmin';
 $route['tabel_konsultan'] = 'IndexController/dataKonsultan';
 $route['tabel_konsultasi'] = 'IndexController/dataKonsultasi';
+$route['laporan_keuangan'] = 'AdminController/laporanKeuangan';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
