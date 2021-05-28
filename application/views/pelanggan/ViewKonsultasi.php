@@ -37,7 +37,7 @@
                     <a class="nav-link active" href="<?= site_url('tabel_konsultan') ?>">Konsultasi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('halaman_pesanan') ?>"><i class="fa fa-shopping-cart"></i></a>
+                    <a class="nav-link" href="<?= site_url('halaman_pesanan') ?>">Cart <i class="fa fa-shopping-cart"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">

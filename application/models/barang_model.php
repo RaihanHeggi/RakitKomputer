@@ -25,6 +25,11 @@ class barang_model extends CI_Model{
         return $this->db->get('barang')->row()->nama_barang;
     }
 
+	public function getHargaBarang($id){
+        $this->db->where('id_barang',$id);
+        return $this->db->get('barang')->row()->harga_barang;
+    }
+
 	public function getStokData($id){
         $this->db->where('id_barang',$id);
         return $this->db->get('barang')->row()->stok_barang;
@@ -39,6 +44,11 @@ class barang_model extends CI_Model{
 		$this->db->where('id_barang', $id_barang);
 		return $this->db->delete('barang');
 	}
+
+
+
+
+
 
 
     //Fungsi Sudah Disiapkan 
