@@ -11,19 +11,13 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark pt-3 pb-3">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
-            <li class="nav-item">    
-                    <a class="nav-link" href="#">Logo Place </a>
-                </li>
                 <li class="nav-item">    
-                    <a class="nav-link" href="#">Left</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="//codeply.com">Codeply</a>
+                    <a class="nav-link" href="#">Logo Place </a>
                 </li>
             </ul>
         </div>
         <div class="mx-auto order-0">
-            <a class="navbar-brand mx-auto" href="<?= site_url('KonsultanController') ?>">Rakit Komputer</a>
+            <a class="navbar-brand mx-auto" href="<?= site_url('halaman_manajer') ?>">Rakit Komputer</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,7 +33,39 @@
         </div>
     </nav>
 
-    <h1>SELAMAT DATANG DI HALAMAN MANAJER</h1>
+    <div class="content-wrapper">
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+        <div class="card mt-3 mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Tanggal Transaksi</div>
+            <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                        <tr>
+                        <th scope="col">Tanggal</th>
+                        <th scope="col">See More</th>
+                        </tr>
+                    </thead>
+                    <tbody id="target">
+                        <tr>
+                          <tr><?php foreach($data_pesanan as $dp) : ?>
+                            <td scope="row"><?= $dp['tanggal']?></td>
+                            <td><a class="btn btn-primary" href="<?= site_url('ManajerController/laporanKeuangan/'.$dp['tanggal']) ?>" type="submit" style="border-radius: 10px;">See More</a></td></td>
+                          </tr><?php endforeach; ?>
+                    </tbody>                   
+                </table>
+            </div>
+            </div>
+            <div class="card-footer small text-muted"> <?php echo $this->session->flashdata('info'); ?></div>
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
 
 
      <!-- Logout Modal-->

@@ -67,11 +67,16 @@
                                 <tbody id="target">
                                     <tr>
                                         <tr><?php foreach($data_pesanan as $dp) : ?>
+                                            
                                             <td scope="row"><?= $dp['id']?></td>
                                             <td scope="row"><?= $dp['nama_barang']?></td>
                                             <td scope="row"><?= $dp['harga']?></td>
-                                            <td scope="row"><?= $dp['status']?></td>  
+                                            <td scope="row"><?= $dp['status']?></td>
+                                            <?php if( $dp['status'] == 'SUDAH BAYAR') :?>
+                                            <td><button class="btn btn-danger" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#edit-data<?php echo $dp['id'] ?>" > Verifikasi Bayar</button></td>
+                                            <?php else:?>
                                             <td><button class="btn btn-primary" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#edit-data<?php echo $dp['id'] ?>" > Verifikasi Bayar</button></td>
+                                            <?php endif ?>
                                         </tr><?php endforeach; ?>
                                 </tbody>                   
                             </table>
