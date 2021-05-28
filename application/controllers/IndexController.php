@@ -62,6 +62,13 @@ class IndexController extends CI_Controller {
 		$this->load->view('pelanggan/ViewKonsultasi',$data);
 	}
 
+	public function dataKonsultasi(){
+		$id_user = $this->user->getIdByEmail($this->session->userdata('email'));
+		$id_konsultan = $this->konsultan->getIdKonsultan($id_user);
+		$data['data_konsultan'] = $this->konsultan->getDataKonsultasi($id_konsultan);
+		$this->load->view('konsultan/ViewKonsul',$data);
+	}
+
 	public function formKonsultasi($id){
 		$nama = $this->session->userdata('nama');
 		$email = $this->session->userdata('email');
