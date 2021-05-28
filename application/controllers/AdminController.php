@@ -150,6 +150,42 @@ class AdminController extends CI_Controller {
 		$data['data_konsultan'] = $dataKirim;
 		$this->load->view('template/adminTemplate',$data);
 	}
-
 	
+
+	//Fungsionalitas Laporan Keuangan
+	public function laporanKeuangan(){
+		$data['main_content'] = 'admin/indexLaporanKeuangan';
+		$data['data_pesanan'] = $this->pesanan->getTanggalData();
+		$this->load->view('template/adminTemplate',$data);
+	}
+
+	public function dataLaporan($tanggal){
+		if($tanggal != NULL){
+			$dataPesanan = $this->pesanan->getDataSpecificTanggal($tanggal);
+			$arrayData = array();
+			foreach($dataPesanan as $dp){
+				if($dp['status'] == "SUDAH BAYAR"){
+					$namaPelanggan = $this->pelanggan->getNamaPelanggan($dp['id_pelanggan']);
+					$namaBarang = $this->barang->getNamaBarang($dp['id_barang']);
+					$data = array(
+						"id" => $dp['id_pesanan'],
+                        "Metode Pembayaran" => $dp['metode_pembayaran'],
+                       	"Nama Barang" => $namaBarang,
+                        "Harga Barang" => $dp['total_harga'],
+                        "Nama Pelanggan" => $namaPelanggan
+					);	
+					array_push($arrayData, $data);
+				}else{
+					continue;
+				}
+			}
+			$data['main_content'] = 'admin/spesifikDataLaporan';
+			$data['data_pesanan'] = $arrayData;
+			$this->load->view('template/adminTemplate',$data);
+		}else{
+			$this->session->set_flashdata('error_messages',' <div><label for="Alert" style="color:red">Data Tidak Lengkap</label></div>');
+			redirect('laporan_keuangan');
+		}
+	}
+
 }
