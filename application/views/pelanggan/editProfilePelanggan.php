@@ -48,55 +48,56 @@
             </ul>
         </div>
     </nav>
-    <div class="row">
-        <div class="col-12">
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fa fa-table"></i>  Konsultan Di Rakit Komputer</div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID Konsultan</th>
-                                    <th scope="col">Nama Konsultan</th>
-                                    <th scope="col">Konsultasi</th>
-                                </tr>   
-                                </thead>
-                                <tbody id="target">
-                                    <tr>
-                                        <tr><?php foreach($data_konsultan as $dp) : ?>
-                                            <td scope="row"><?= $dp['id_konsultan']?></td>
-                                            <td scope="row"><?= $dp['nama_konsultan']?></td> 
-                                            <td><a class="btn btn-primary" href="<?= site_url('IndexController/formKonsultasi/'.$dp['id_konsultan'])?>" type="submit" style="border-radius: 10px;">Sesi Konsultasi</a></td>
-                                        </tr><?php endforeach; ?>
-                                </tbody>                   
-                            </table>
-                        </div>
-                    </div>
-                </div>
+
+    <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <div class="mt-4 ml-4 mr-4">
+        <h1 class="mb-5">Form Edit Data Pribadi</h1>
+        <form action="<?= site_url('edit_profile_pelanggan')?>" method="post">
+            <?php foreach($data_pelanggan as $db) : ?>
+            <div class="form-group">
+                <input type="hidden" class="form-control" id="idpelanggan" name='idpelanggan' value="<?= $db['id_pelanggan']?>">
+            </div>
+            <div class="form-group">
+                <label for="namapelanggan" style="font-weight:bold">Nama pelanggan</label>
+                <input type="text" class="form-control" name="namapelanggan" id="namapelanggan" placeholder="<?= $db['nama_pelanggan']?>" required>
+            </div>
+            <div class="form-group">
+                <label for="tipepelanggan" style="font-weight:bold">Alamat Pelanggan</label>
+                <input type="text" class="form-control" name="alamat" id="alamat" placeholder="<?= $db['alamat_pelanggan']?>" required>
+            </div>
+            <div class="form-group">
+                <label for="merkpelanggan" style="font-weight:bold">Email Pelanggan</label>
+                <input type="text" class="form-control" name="email" id="email" placeholder="<?= $db['email_pelanggan']?>" required>
+            </div>
+            <div class="form-group">
+                <input type="hidden" class="form-control" id="iduser" name='iduser' value="<?= $db['id_user']?>">
+            </div>
+            <button type="submit" class="btn btn-primary mb-3" style="width:100%">Submit</button>
+        </form>
+        <?php endforeach; ?>
+      </div>
+      <div class="card-footer small text-muted"> <?php echo $this->session->flashdata('info'); ?></div>
+
+    </div>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
+                <a class="btn btn-primary" href="<?= site_url('halaman_index') ?>">Logout</a>
+            </div>
             </div>
         </div>
-    </div>
-    
-                                    
-     <!-- Logout Modal-->
-     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
-            <a class="btn btn-primary" href="<?= site_url('halaman_index') ?>">Logout</a>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
