@@ -54,6 +54,16 @@ class pelanggan_model extends CI_Model{
         $this->db->where('id_user',$id_user);
         return $this->db->get('pelanggan')->row()->id_pelanggan;
     }
+
+    function getDataId($id_user){
+        $this->db->where('id_user',$id_user);
+        return $this->db->get('pelanggan')->result_array();
+    }
+
+    function editData($idPelanggan,$data){
+        $this->db->where('id_pelanggan',$idPelanggan);
+        return $this->db->update('pelanggan',$data);
+    }
 }
 
 ?>

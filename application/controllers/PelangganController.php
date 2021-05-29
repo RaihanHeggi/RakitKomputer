@@ -42,4 +42,38 @@ class PelangganController extends CI_Controller {
 			redirect('halaman_pesanan');
 		}
 	}
+
+	public function editProfilePelanggan(){
+		$email = $this->session->userdata('email');
+		$idUser = $this->user->getIdByEmail($email);
+		$data['data_pelanggan'] = $this->pelanggan->getDataId($idUser);
+		$this->load->view('pelanggan/editProfilePelanggan',$data);
+	}
+
+	public function editProfile(){
+		$nama = $this->input->post('namapelanggan');
+		$alamat = $this->input->post('alamat');
+		$email = $this->input->post('email');
+		$idUser = $this->input->post('iduser');
+		$idPelanggan = $this->input->post('idpelanggan');
+		if(!((ctype_space($nama)) || (ctype_space($alamat)) || (ctype_space($email)) || (ctype_space($idUser)) || (ctype_space($idPelanggan)))){
+			$dataPelanggan = array(
+				'nama_pelanggan' => $nama,
+				'alamat_pelanggan' => $alamat,
+				'email_pelanggan'=> $email
+			);
+			$dataUser = array(
+				'email' => $email
+			);
+			$this->pelanggan->editData($idPelanggan,$dataPelanggan);
+			$this->user->editDataUser($idUser,$dataUser);
+			$this->session->set_userdata('email',$email);
+			$this->session->set_flashdata('info', '<div><label for="Alert" style="color:green">Data Berhasil Dirubah</label></div>');
+			redirect('profile_pelanggan');
+		}else{
+			$this->session->set_flashdata('info', '<div><label for="Alert" style="color:red">Data Tidak Lengkap</label></div>');
+			redirect('profile_pelanggan');
+		}
+
+	}
 }

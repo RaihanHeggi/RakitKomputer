@@ -65,6 +65,11 @@ class user_model extends CI_Model{
         $this->db->where('email',$email);
         return $this->db->get('user')->row()->id_user;
     }
+
+    function editDataUser($idUser, $data){
+        $this->db->where('id_user',$idUser);
+        return $this->db->update('user',$data);
+    }
 }
 
 ?>
