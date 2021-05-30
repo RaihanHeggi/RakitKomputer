@@ -28,6 +28,9 @@
                     <a class="nav-link" href="<?= site_url('tabel_konsultasi') ?>">Konsultasi</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= site_url('profile_konsultan') ?>">Profile</i></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                         <i class="fa fa-fw fa-sign-out"></i>Logout
                     </a>

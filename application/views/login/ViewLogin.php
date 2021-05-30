@@ -42,7 +42,7 @@
             <h1 id="LoginHeader">Selamat</br>Datang</h1>
             <div class="login_card">
                 <div class="form-group">
-                    <?php echo $this->session->flashdata('error_messages'); ?>
+                    <div class="small text-muted"> <?php echo $this->session->flashdata('info'); ?></div>
                 </div>
                 <form action="<?= site_url('proses_login') ?>" method="post">
                     <label>Email</label>
@@ -55,6 +55,7 @@
                         <p>Belum Mempunyai Akun ? <span><a href="<?= site_url('halaman_register') ?>" style="color: #17A1EF;">Register</a></span></p>
                     </div>
                     <input type="submit" class="buttonLogin" value="LOGIN">
+                    
                 </form>
             </div>
         <div>

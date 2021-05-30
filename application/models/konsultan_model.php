@@ -47,6 +47,16 @@ class konsultan_model extends CI_Model{
         $this->db->where('id_konsultan',$id);
         return $this->db->get('konsultasi')->result_array();
     }
+
+    function getDataId($id_user){
+        $this->db->where('id_user',$id_user);
+        return $this->db->get('konsultan')->result_array();
+    }
+
+    function editData($idkonsultan,$data){
+        $this->db->where('id_konsultan',$idkonsultan);
+        return $this->db->update('konsultan',$data);
+    }
 }
 
 ?>

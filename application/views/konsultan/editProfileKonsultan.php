@@ -28,10 +28,10 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">        
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="<?= site_url('tabel_konsultasi') ?>">Konsultasi</a>
+                    <a class="nav-link" href="<?= site_url('tabel_konsultasi') ?>">Konsultasi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('profile_pelanggan') ?>">Profile</i></a>
+                    <a class="nav-link active" href="<?= site_url('profile_konsultan') ?>">Profile</i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
@@ -40,56 +40,57 @@
                 </li>
             </ul>
         </div>
-    </nav>
-    <div class="row">
-        <div class="col-12">
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fa fa-table"></i>  Konsultasi Di Rakit Komputer</div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID Pelanggan</th>
-                                    <th scope="col">Nama Pelanggan</th>
-                                    <th scope="col">Data Konsultasi</th>
-                                </tr>   
-                                </thead>
-                                <tbody id="target">
-                                    <tr>
-                                        <tr><?php foreach($data_konsultan as $dp) : ?>
-                                            <td scope="row"><?= $dp['id_pelanggan']?></td>
-                                            <td><td>
-                                            <td><a class="btn btn-primary" href="<?= site_url('#')?>" type="submit" style="border-radius: 10px;">Sesi Konsultasi</a></td>
-                                        </tr><?php endforeach; ?>
-                                </tbody>                   
-                            </table>
-                        </div>
-                    </div>
-                </div>
+    </nav> 
+
+    <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <div class="mt-4 ml-4 mr-4">
+        <h1 class="mb-5">Form Edit Data Pribadi</h1>
+        <form action="<?= site_url('edit_profile_konsultan') ?>" method="post">
+            <?php foreach($data_konsultan as $db) : ?>
+            <div class="form-group">
+                <input type="hidden" class="form-control" id="idkonsultan" name='idkonsultan' value="<?= $db['id_konsultan']?>">
+            </div>
+            <div class="form-group">
+                <label for="namakonsultan" style="font-weight:bold">Nama Konsultan</label>
+                <input type="text" class="form-control" name="namakonsultan" id="namakonsultan" placeholder="<?= $db['nama_konsultan']?>" required>
+            </div>
+            <div class="form-group">
+                <label for="tipekonsultan" style="font-weight:bold">Alamat Konsultan</label>
+                <input type="text" class="form-control" name="alamat" id="alamat" placeholder="<?= $db['alamat_konsultan']?>" required>
+            </div>
+            <div class="form-group">
+                <label for="merkkonsultan" style="font-weight:bold">Email Konsultan</label>
+                <input type="text" class="form-control" name="email" id="email" placeholder="<?= $db['email_konsultan']?>" required>
+            </div>
+            <div class="form-group">
+                <input type="hidden" class="form-control" id="iduser" name='iduser' value="<?= $db['id_user']?>">
+            </div>
+            <button type="submit" class="btn btn-primary mb-3" style="width:100%">Submit</button>
+        </form>
+        <?php endforeach; ?>
+      </div>
+      <div class="card-footer small text-muted"> <?php echo $this->session->flashdata('info'); ?></div>
+
+    </div>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
+                <a class="btn btn-primary" href="<?= site_url('halaman_index') ?>">Logout</a>
+            </div>
             </div>
         </div>
-    </div>
-    
-                                    
-     <!-- Logout Modal-->
-     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
-            <a class="btn btn-primary" href="<?= site_url('halaman_index') ?>">Logout</a>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
