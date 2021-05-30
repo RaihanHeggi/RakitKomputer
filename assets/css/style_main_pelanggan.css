@@ -3,6 +3,7 @@ body,
 header,
 .carousel {
 	height: 60vh;
+	font-family: "Poppins", sans-serif;
 }
 
 @media (max-width: 740px) {
@@ -11,6 +12,7 @@ header,
 	header,
 	.carousel {
 		height: 100vh;
+		font-family: "Poppins", sans-serif;
 	}
 }
 
@@ -20,12 +22,14 @@ header,
 	header,
 	.carousel {
 		height: 100vh;
+		font-family: "Poppins", sans-serif;
 	}
 }
 .view,
 body,
 html {
 	height: 100%;
+	font-family: "Poppins", sans-serif;
 }
 .carousel {
 	height: 50%;
