@@ -40,41 +40,77 @@
                 </li>
             </ul>
         </div>
-    </nav>
-    <div class="row">
-        <div class="col-12">
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fa fa-table"></i>  Konsultasi Di Rakit Komputer</div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID Pelanggan</th>
-                                    <th scope="col">Nama Pelanggan</th>
-                                    <th scope="col">Data Konsultasi</th>
-                                </tr>   
-                                </thead>
-                                <tbody id="target">
-                                    <tr>
-                                        <tr><?php foreach($data_konsultan as $dp) : ?>
-                                            <td scope="row"><?= $dp['id_pelanggan']?></td>
-                                            <td><td>
-                                            <td><a class="btn btn-primary" href="<?= site_url('#')?>" type="submit" style="border-radius: 10px;">Sesi Konsultasi</a></td>
-                                        </tr><?php endforeach; ?>
-                                </tbody>                   
-                            </table>
-                        </div>
-                    </div>
+    </nav>  
+    <div class="container">
+        <div class="mt-4">
+            <form method="POST" id="comment_form">
+                <div class="form-group">
+                <input type="text" name="comment_name" id="comment_name" class="form-control" placeholder="Enter Name" />
                 </div>
-            </div>
-        </div>
+                <div class="form-group">
+                <textarea name="comment_content" id="comment_content" class="form-control" placeholder="Enter Comment" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                <input type="hidden" name="comment_id" id="comment_id" value="0" />
+                <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
+                </div>
+            </form>
+            <span id="comment_message"></span>
+            <br />
+            <div id="display_comment"></div>
+        </div>  
     </div>
-    
-                                    
-     <!-- Logout Modal-->
-     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <script>
+        $(document).ready(function(){
+        
+        $('#comment_form').on('submit', function(event){
+            event.preventDefault();
+            var form_data = $(this).serialize();
+            $.ajax({
+            url:"add_comment.php",
+            method:"POST",
+            data:form_data,
+            dataType:"JSON",
+            success:function(data)
+            {
+                if(data.error != '')
+                {
+                $('#comment_form')[0].reset();
+                $('#comment_message').html(data.error);
+                $('#comment_id').val('0');
+                load_comment();
+                }
+            }
+            })
+        });
+
+        load_comment();
+
+        function load_comment()
+        {
+            $.ajax({
+            url:"fetch_comment.php",
+            method:"POST",
+            success:function(data)
+            {
+                $('#display_comment').html();
+            }
+            })
+            }
+
+            $(document).on('click', '.reply', function(){
+            var comment_id = $(this).attr("id");
+            $('#comment_id').val(comment_id);
+            $('#comment_name').focus();
+            });
+        
+        });
+    </script>
+
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">

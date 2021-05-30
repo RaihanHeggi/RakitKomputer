@@ -85,9 +85,9 @@ class LoginController extends CI_Controller {
 				redirect('index_admin');
 			}
 		}else{
-			$this->session->set_flashdata('error_messages','<div class="alert alert-danger alert-dismissible fade show" role="alert">
-             Username dan Password Tidak Sesuai. </div>'); 
-            redirect(base_url());
+			$this->session->set_flashdata('info','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Username dan Password Tidak Sesuai. </div>'); 
+            redirect('login');
 		}
 	}
 }

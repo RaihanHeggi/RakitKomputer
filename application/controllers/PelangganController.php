@@ -67,6 +67,7 @@ class PelangganController extends CI_Controller {
 			);
 			$this->pelanggan->editData($idPelanggan,$dataPelanggan);
 			$this->user->editDataUser($idUser,$dataUser);
+			$this->session->set_userdata('nama',$nama);
 			$this->session->set_userdata('email',$email);
 			$this->session->set_flashdata('info', '<div><label for="Alert" style="color:green">Data Berhasil Dirubah</label></div>');
 			redirect('profile_pelanggan');
@@ -74,6 +75,5 @@ class PelangganController extends CI_Controller {
 			$this->session->set_flashdata('info', '<div><label for="Alert" style="color:red">Data Tidak Lengkap</label></div>');
 			redirect('profile_pelanggan');
 		}
-
 	}
 }
