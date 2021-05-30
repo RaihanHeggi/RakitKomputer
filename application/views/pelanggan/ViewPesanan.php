@@ -31,7 +31,7 @@
                     <a class="nav-link" href="<?= site_url('tabel_konsultan') ?>">Konsultasi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('halaman_pesanan') ?>">Cart <i class="fa fa-shopping-cart"></i></a>
+                    <a class="nav-link" href="<?= site_url('halaman_pesanan') ?>"><i class="fa fa-shopping-cart"></i> Cart </a>
                 </li>
                 <li class="nav-item dropdown">
                   <div class="dropdown-menu"aria-labelledby="navbarDropdown">
@@ -72,9 +72,9 @@
                                             <td scope="row"><?= $dp['id']?></td>
                                             <td scope="row"><?= $dp['nama_barang']?></td>
                                             <td scope="row"><?= $dp['harga']?></td>
-                                            <td scope="row"><?= $dp['status']?></td>
+                                            <td scope="row"><?= ucwords(strtolower($dp['status']))?></td>
                                             <?php if( $dp['status'] == 'SUDAH BAYAR') :?>
-                                            <td><button class="btn btn-danger" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#edit-data<?php echo $dp['id'] ?>" > Verifikasi Bayar</button></td>
+                                            <td><button class="btn btn-danger" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#done_pay" >Sudah Bayar</button></td>
                                             <?php else:?>
                                             <td><button class="btn btn-primary" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#edit-data<?php echo $dp['id'] ?>" > Verifikasi Bayar</button></td>
                                             <?php endif ?>
@@ -117,6 +117,25 @@
         </div>
     </div>
     <?php endforeach ?>
+
+    <!-- Sudah Bayar Modal-->
+    <div class="modal fade" id="done_pay" tabindex="-1" role="dialog" aria-labelledby="done_pay" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Your Payment Status</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">The Payment Process Has Been Done</div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" type="button" data-dismiss="modal">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
                                     
      <!-- Logout Modal-->
      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
