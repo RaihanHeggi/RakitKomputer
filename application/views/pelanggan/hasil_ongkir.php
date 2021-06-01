@@ -53,7 +53,7 @@
         <div class="col-12">
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-table"></i>Metode Pengiriman Dan Ongkos Kirim</div>
+                    <i class="fa fa-table"></i> Metode Pengiriman Dan Ongkos Kirim</div>
                     <div class="card-body">
                         <?php if(!empty($costs)): ?>
                             <div style="margin: 20px 0;"></div>
