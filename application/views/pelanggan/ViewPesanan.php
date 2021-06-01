@@ -54,6 +54,9 @@
                 <div class="card-header">
                     <i class="fa fa-table"></i> PESANAN YANG ANDA MILIKI</div>
                     <div class="card-body">
+                        <div class="mb-2">
+                            <a class="btn btn-primary mr-3 mb-3" href="<?= site_url('cek_ongkir') ?>" role="button">Cek Ongkos Kirim</a>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
