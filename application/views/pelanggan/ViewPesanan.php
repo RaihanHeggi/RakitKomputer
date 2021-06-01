@@ -66,6 +66,7 @@
                                     <th scope="col">Harga Barang</th>
                                     <th scope="col">Status Bayar</th>
                                     <th scope="col">Verifikasi Pembayaran</th>
+                                    <th scope="col">Hapus Pesanan</th>
                                 </tr>   
                                 </thead>
                                 <tbody id="target">
@@ -77,9 +78,11 @@
                                             <td scope="row"><?= $dp['harga']?></td>
                                             <td scope="row"><?= ucwords(strtolower($dp['status']))?></td>
                                             <?php if( $dp['status'] == 'SUDAH BAYAR') :?>
-                                            <td><button class="btn btn-danger" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#done_pay" >Sudah Bayar</button></td>
+                                            <td><button class="btn btn-secondary" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#done_pay" >Sudah Bayar</button></td>
+                                            <td><button class="btn btn-secondary" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#done_pay" ><i class="fa fa-trash"></button></td>
                                             <?php else:?>
                                             <td><button class="btn btn-primary" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#edit-data<?php echo $dp['id'] ?>" > Verifikasi Bayar</button></td>
+                                            <td><a class="btn btn-danger" href="<?=  site_url('PelangganController/deletePesanan/'.$dp['id']) ?>" type="submit" style="border-radius: 10px;"><i class="fa fa-trash"></a></td>
                                             <?php endif ?>
                                         </tr><?php endforeach; ?>
                                 </tbody>                   

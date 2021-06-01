@@ -42,6 +42,11 @@ class pesanan_model extends CI_Model{
         return $this->db->get('pesanan')->result_array();
     }
 
+    function deletePesanan($id){
+        $this->db->where('id_pesanan',$id);
+        return $this->db->delete('pesanan');
+    }
+
 
 }
 
