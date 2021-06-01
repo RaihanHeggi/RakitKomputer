@@ -49,9 +49,9 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <div class="container mt-4 ">
             <div class="row">
-                <div class="col-md-10">
+                <div class=" mx-auto col-md-10">
                     <h2>Cek Ongkir via Pos Indonesia</h2>
                     <form id="cekOngkirForm" action="<?= site_url('Cek_Ongkir/hasilOngkir') ?>" method="post">
                         <div class="form-group">
