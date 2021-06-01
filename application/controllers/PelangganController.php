@@ -76,4 +76,35 @@ class PelangganController extends CI_Controller {
 			redirect('profile_pelanggan');
 		}
 	}
+
+	public function deletePesanan($id){
+		$nama = $this->session->userdata('nama');
+		$email = $this->session->userdata('email');
+		if(($nama != NULL) && ($email != NULL)){
+			$this->pesanan->deletePesanan($id);
+			$idUser = $this->user->getIDByEmail($email);
+			$dataPelanggan = $this->pelanggan->getDataUser($nama,$idUser);
+			$dataPesanan = $this->pesanan->getData($dataPelanggan['id_pelanggan']);
+			$dataBarang = array();
+			foreach ($dataPesanan as $dp){
+				if($dp['status'] != 'BARANG TIDAK TERSEDIA'){
+					$namaBarang = $this->barang->getNamaBarang($dp['id_barang']);
+					array_push($dataBarang, array(
+							'id' => $dp['id_pesanan'],
+							'nama_barang' => $namaBarang,
+							'status' => $dp['status'],
+							'harga' => $dp['total_harga']
+						)
+					);
+				}else{
+					continue;
+				}
+			}
+			$data['data_pesanan'] = $dataBarang;
+			$this->load->view('pelanggan/ViewPesanan',$data);
+		}else{
+			$this->session->set_flashdata('error_messages',' <div><label for="Alert" style="color:green">User Tidak Valid</label></div>');
+			redirect('halaman_pelanggan');
+		}
+	}
 }
