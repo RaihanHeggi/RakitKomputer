@@ -17,6 +17,8 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                        <th scope="col">ID Pelanggan</th>
+                        <th scope="col">Status Belanja</th>
                         <th scope="col">Tanggal</th>
                         <th scope="col">Cek Transaksi</th>
                         <th scope="col">Tambah Ke Laporan</th>
@@ -25,6 +27,8 @@
                     <tbody id="target">
                         <tr>
                         <tr><?php foreach($data_pesanan as $dp) : ?>
+                        <td scope="row"><?= $dp['id_pelanggan']?></td>
+                        <td scope="row"><?= ucwords(strtolower($dp['status']))?></td>
                         <td scope="row"><?= $dp['tanggal']?></td>
                         <?php if( $dp['status'] == 'SUDAH BAYAR') :?>
                           <td><a class="btn btn-primary" href="<?= site_url('AdminController/dataLaporan/'.$dp['tanggal']) ?>" type="submit" style="border-radius: 10px;">See More</a></td></td>
@@ -56,7 +60,7 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Transactions Not Found</div>
+          <div class="modal-body">Transactions Not Completed</div>
           <div class="modal-footer">
             <button class="btn btn-danger" type="button" data-dismiss="modal">Back</button>
           </div>
