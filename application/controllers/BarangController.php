@@ -7,7 +7,7 @@ class BarangController extends CI_Controller {
     {
 		parent::__construct();
 		$this->load->model('barang_model');
-		$this->load->model('barang');
+		// $this->load->model('barang');
         $this->load->helper('url');  
     }
 
