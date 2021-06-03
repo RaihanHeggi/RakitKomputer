@@ -75,4 +75,8 @@ $route['edit_profile_pelanggan'] = 'PelangganController/editProfile';
 $route['edit_profile_konsultan'] = 'KonsultanController/editProfile';
 $route['cek_ongkir'] = 'Cek_ongkir';
 $route['404_override'] = '';
+
+$route['konsultasi']['get'] = 'KonsultasiController';
+$route['konsultasi']['post'] = 'KonsultasiController/sendKonsultasi';
+$route['postKomentar']['post'] = 'KonsultasiController/postKomentar';
 $route['translate_uri_dashes'] = FALSE;
