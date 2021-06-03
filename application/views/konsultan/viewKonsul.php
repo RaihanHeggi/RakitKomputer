@@ -31,7 +31,7 @@
                     <a class="nav-link active" href="<?= site_url('tabel_konsultasi') ?>">Konsultasi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('profile_pelanggan') ?>">Profile</i></a>
+                    <a class="nav-link" href="<?= site_url('profile_konsultan') ?>">Profile</i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
@@ -51,16 +51,16 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID Pelanggan</th>
-                                    <th scope="col">Nama Pelanggan</th>
+                                    <th scope="col">ID User</th>
+                                    <th scope="col">Judul</th>
                                     <th scope="col">Data Konsultasi</th>
                                 </tr>   
                                 </thead>
                                 <tbody id="target">
                                     <tr>
                                         <tr><?php foreach($data_konsultan as $dp) : ?>
-                                            <td scope="row"><?= $dp['id_pelanggan']?></td>
-                                            <td><td>
+                                            <td scope="row"><?= $dp['id_user']?></td>
+                                            <td scope="row"><?= $dp['judul']?></td>
                                             <td><a class="btn btn-primary" href="<?= site_url('#')?>" type="submit" style="border-radius: 10px;">Sesi Konsultasi</a></td>
                                         </tr><?php endforeach; ?>
                                 </tbody>                   
