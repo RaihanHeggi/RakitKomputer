@@ -17,7 +17,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                        <th scope="col">ID Pelanggan</th>
+                        <th scope="col">Nama Pelanggan</th>
                         <th scope="col">Status Belanja</th>
                         <th scope="col">Tanggal</th>
                         <th scope="col">Cek Transaksi</th>
@@ -27,7 +27,7 @@
                     <tbody id="target">
                         <tr>
                         <tr><?php foreach($data_pesanan as $dp) : ?>
-                        <td scope="row"><?= $dp['id_pelanggan']?></td>
+                        <td scope="row"><?= $dp['nama_pelanggan']?></td>
                         <td scope="row"><?= ucwords(strtolower($dp['status']))?></td>
                         <td scope="row"><?= $dp['tanggal']?></td>
                         <?php if( $dp['status'] == 'SUDAH BAYAR') :?>

@@ -155,7 +155,18 @@ class AdminController extends CI_Controller {
 	//Fungsionalitas Laporan Keuangan
 	public function laporanKeuangan(){
 		$data['main_content'] = 'admin/indexLaporanKeuangan';
-		$data['data_pesanan'] = $this->pesanan->getTanggalData();
+		$dataPesanan = $this->pesanan->getTanggalData();
+		$tempArray = array();
+		foreach($dataPesanan as $dp){
+			$namaPelanggan = $this->pelanggan->getNamaPelanggan($dp['id_pelanggan']);
+			array_push($tempArray, array(
+				'nama_pelanggan' => $namaPelanggan,
+				'status' => $dp['status'],
+				'tanggal' => $dp['tanggal']
+				)
+			);
+		}
+		$data['data_pesanan'] = $tempArray;
 		$this->load->view('template/adminTemplate',$data);
 	}
 

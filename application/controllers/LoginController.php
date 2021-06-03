@@ -26,7 +26,8 @@ class LoginController extends CI_Controller {
 			'nama' => $nama
 		);
 		$this->session->set_userdata($data_session);
-		$this->session->set_userdata("Status", $status);
+		$this->session->set_userdata("Status", "User");
+		$this->session->set_userdata('Role',$status);
 		$statusLogin = $status;
 		return $statusLogin;
 	}
