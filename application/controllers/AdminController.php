@@ -11,7 +11,7 @@ class AdminController extends CI_Controller {
 		$this->load->model('user_model', 'user');
 		$this->load->model('konsultan_model','konsultan');
 		$this->load->model('pesanan_model','pesanan');
-		#$this->load->model("admin","admin_model");
+		$this->load->model("laporan_model","laporan");
         $this->load->helper('url');  
     }
 
@@ -157,6 +157,19 @@ class AdminController extends CI_Controller {
 		$data['main_content'] = 'admin/indexLaporanKeuangan';
 		$data['data_pesanan'] = $this->pesanan->getTanggalData();
 		$this->load->view('template/adminTemplate',$data);
+	}
+
+	public function addLaporan($tanggal){
+		if($this->laporan->cekTanggal($tanggal)){
+			$data = array(
+				'tanggal_laporan' => $tanggal
+			);
+			$this->laporan->insertData($data);
+			redirect('laporan_keuangan');
+		}else {
+			$this->session->set_flashdata('info', '<div><label for="Alert" style="color:red">Data Sudah Pernah Dimasukkan</label></div>');
+			redirect('laporan_keuangan');
+		}
 	}
 
 	public function dataLaporan($tanggal){
