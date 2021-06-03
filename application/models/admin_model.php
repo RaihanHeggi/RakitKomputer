@@ -30,7 +30,7 @@ class admin_model extends CI_Model{
     function getNama($idUser){
         $this->db->select('nama_admin');
         $this->db->where('id_user',$idUser);
-        return $this->db->get('admin')->row()->nama_pelanggan;
+        return $this->db->get('admin')->row()->nama_admin;
     }
 
     function getAllData(){
