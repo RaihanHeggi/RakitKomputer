@@ -19,7 +19,31 @@ class LoginController extends CI_Controller {
 		$this->load->view('login/ViewLogin');
 	}
 
-	public function loginProses($email,$password,$idUser){
+	private function setStatus($email,$password,$nama,$status){
+		$data_session = array(
+			'email' => $email,
+			'password' => $password,
+			'nama' => $nama
+		);
+		$this->session->set_userdata($data_session);
+		$this->session->set_userdata("Status", $status);
+		$statusLogin = $status;
+		return $statusLogin;
+	}
+
+	private function redirectPage($status){
+		if ($status == "Pelanggan"){
+			redirect('PelangganController');
+		}else if($status == "Konsultan"){
+			redirect('KonsultanController');
+		}else if ($status == "Manajer"){
+			redirect('halaman_manajer');
+		}else {
+			redirect('index_admin');
+		}
+	}
+
+	private function loginProses($email,$password,$idUser){
 		$isUser = $this->pelanggan->cekData($idUser); 
 		$isAdmin = $this->admin->cekData($idUser);
 		$isKonsultan = $this->konsultan->cekData($idUser);
@@ -27,44 +51,16 @@ class LoginController extends CI_Controller {
 		$statusLogin = "";
 		if($isUser){
 			$nama_user = $this->pelanggan->getNama($idUser);
-			$data_session = array(
-				'email' => $email,
-				'password' => $password,
-				'nama' => $nama_user
-			);
-			$this->session->set_userdata($data_session);
-			$this->session->set_userdata("Status", "User");
-			$statusLogin = "Pelanggan";
+			$statusLogin = $this->setStatus($email,$password,$nama_user,"Pelanggan");
 		}else if ($isAdmin){
 			$nama_admin = $this->admin->getNama($idUser);
-			$data_session = array(
-				'email' => $email,
-				'password' => $password,
-				'nama' => $nama_admin
-			);
-			$this->session->set_userdata($data_session);
-			$this->session->set_userdata("Status", "Admin");
-			$statusLogin = "Admin";
+			$statusLogin = $this->setStatus($email,$password,$nama_admin,"Admin");
 		}else if($isKonsultan){
-			$nama_user = $this->konsultan->getNama($idUser);
-			$data_session = array(
-				'email' => $email,
-				'password' => $password,
-				'nama' => $nama_user
-			);
-			$this->session->set_userdata($data_session);
-			$this->session->set_userdata("Status", "Konsultan");
-			$statusLogin = "Konsultan";
+			$nama_konsultan = $this->konsultan->getNama($idUser);
+			$statusLogin = $this->setStatus($email,$password,$nama_konsultan,"Konsultan");
 		}else{
 			$nama_manajer = $this->admin->getNama($idUser);
-			$data_session = array(
-				'email' => $email,
-				'password' => $password,
-				'nama' => $nama_manajer
-			);
-			$this->session->set_userdata($data_session);
-			$this->session->set_userdata("Status", "Manajer");
-			$statusLogin = "Manajer";
+			$statusLogin = $this->setStatus($email,$password,$nama_manajer,"Manajer");
 		}
 		return $statusLogin;
 	}
@@ -75,15 +71,7 @@ class LoginController extends CI_Controller {
 		if($this->user->cekDataEmail($email,$password)){
 			$idUser = $this->user->getIDEmail($email,$password);
 			$status = $this->loginProses($email,$password,$idUser);
-			if ($status == "Pelanggan"){
-				redirect('PelangganController');
-			}else if($status == "Konsultan"){
-				redirect('KonsultanController');
-			}else if ($status == "Manajer"){
-				redirect('halaman_manajer');
-			}else {
-				redirect('index_admin');
-			}
+			$this->redirectPage($status);
 		}else{
 			$this->session->set_flashdata('info','<div class="alert alert-danger alert-dismissible fade show" role="alert">
             Username dan Password Tidak Sesuai. </div>'); 

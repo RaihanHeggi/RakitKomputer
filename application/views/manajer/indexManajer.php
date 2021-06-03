@@ -47,13 +47,15 @@
                                 <tr>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">See More</th>
+                                <th scope="col">Export To PDF</th>
                                 </tr>
                             </thead>
                             <tbody id="target">
                                 <tr>
                                 <tr><?php foreach($data_pesanan as $dp) : ?>
-                                    <td scope="row"><?= $dp['tanggal']?></td>
-                                    <td><a class="btn btn-primary" href="<?= site_url('ManajerController/laporanKeuangan/'.$dp['tanggal']) ?>" type="submit" style="border-radius: 10px;">See More</a></td></td>
+                                    <td scope="row"><?= $dp['tanggal_laporan']?></td>
+                                    <td><a class="btn btn-primary" href="<?= site_url('ManajerController/laporanKeuangan/'.$dp['tanggal_laporan']) ?>" type="submit" style="border-radius: 10px;">See More</a></td></td>
+                                    <td><a class="btn btn-success" href="<?= site_url('ManajerController/exportToPDF/'.$dp['tanggal_laporan']) ?>" type="submit" style="border-radius: 10px;">Export Data</a></td></td>
                                 </tr><?php endforeach; ?>
                             </tbody>                   
                         </table>
@@ -66,6 +68,25 @@
       </div>
     </div>
     <!-- /.container-fluid-->
+
+
+    <!-- Tidak Ada Data Modal-->
+    <div class="modal fade" id="done_pay" tabindex="-1" role="dialog" aria-labelledby="done_pay" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">No Result</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Transactions Not Found</div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" type="button" data-dismiss="modal">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
      <!-- Logout Modal-->
