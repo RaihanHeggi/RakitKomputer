@@ -40,7 +40,7 @@ class Migration_Pesanan extends CI_Migration
 				'constraint' => '100',
             ],
 			'tanggal' => [
-                'type' => 'datetime',
+                'type' => 'date',
             ],
         ));
         $this->dbforge->add_key('id_pesanan', TRUE);

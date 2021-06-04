@@ -193,6 +193,11 @@
       </div>
     </div>
 
+<<<<<<< HEAD
+    <h1>SELAMAT DATANG DI HALAMAN PELANGGAN</h1>
+	<a class="btn btn-primary" href="<?php echo base_url('index.php/konsultasi'); ?>">Konsultasi shortcut</a>
+    <a><?php echo $this->session->userdata('nama') ?></a>
+=======
     <!-- Bootstrap core JavaScript-->
     <script src="<?php echo $this->config->item('base_url'); ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo $this->config->item('base_url'); ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -207,5 +212,6 @@
     <!-- Custom scripts for this page-->
     <script src="<?php echo $this->config->item('base_url'); ?>/assets/js/sb-admin-datatables.min.js"></script>
     <script src="<?php echo $this->config->item('base_url'); ?>/assets/js/sb-admin-charts.min.js"></script>
+>>>>>>> 1b0020988f1b6e04e9dc0d2a405ce5015f62844c
 </body>
 </html>
