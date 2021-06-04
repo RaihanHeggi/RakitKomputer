@@ -6,7 +6,7 @@ class konsultasi_model extends CI_Model {
 
 	public function getAll($user) {
 		if($user['Status'] != NULL) {
-			if($user['Status'] == 'Konsultan') {
+			if($user['Role'] == 'Konsultan') {
 				return $this->db->select('*')
 						->from('konsultasi')
 						->join('user', 'konsultasi.id_user = user.id_user')

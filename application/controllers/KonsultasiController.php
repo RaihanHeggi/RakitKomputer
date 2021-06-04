@@ -29,18 +29,14 @@ class KonsultasiController extends CI_Controller {
 		$data['komentar'] = $this->komentar->getKomentar($id);
 
 		$data['page_title'] = 'Konsultasi';
-
-		if($this->session->userdata('Status') != 'Konsultan') {
-			echo $data['properti_konsultasi']['username'];
-			echo $this->session->userdata('username');
+		if($this->session->userdata('Role') != 'Konsultan') {
 			if($data['properti_konsultasi']['username'] == $this->session->userdata('username')) {
 				$data['main_content'] = 'konsultasi/indexDetail';
 				$this->load->view('template/ViewHeader', $data);
 			} else {
-				$data['main_content'] = 'konsultasi/indexKonsultasi';
-				$data['allKonsultasi'] = $this->konsultasi->getAll($this->session->userdata());
-				$this->load->view('template/ViewHeader', $data);
+				redirect('konsultasi', 'refresh');
 			}
+			$this->session->set_userdata('current_url', current_url());
 		} else {
 			$data['main_content'] = 'konsultasi/indexDetail';
 			$this->load->view('template/ViewHeader', $data);
@@ -56,7 +52,8 @@ class KonsultasiController extends CI_Controller {
 	}
 
 	public function sendKonsultasi() {
-		$waktu = date("Y-m-d H:i:s");
+		$date = new DateTime("now", new DateTimeZone('Asia/Jakarta') );
+		$waktu = $date->format("Y-m-d H:i:s");
 
 		$id_user = $this->konsultasi->getIDUser($this->session->userdata('email'));
 
@@ -88,9 +85,23 @@ class KonsultasiController extends CI_Controller {
 		);
 
 		$this->konsultasi->postKomentar($dataKomentar);
-		$referred_from = $this->session->userdata('referred_from');
-		redirect($referred_from, 'refresh');
-		$this->session->unset_userdata('referred_from');
+		$referred_from = $this->session->userdata('current_url');
+		$this->session->unset_userdata('current_url');
+		redirect($_SERVER['HTTP_REFERER'], 'refresh');
+	}
+
+	public function postEditKomentar() {
+		$data = array(
+			'komentar' => $this->input->post('komentar'),
+		);
+		
+		$this->komentar->editKomentar($this->input->post('id'),$data);
+		redirect($_SERVER['HTTP_REFERER'], 'refresh');
+	}
+
+	public function deleteKomentar() {
+		$this->komentar->deleteKomentar($this->input->post('id'));
+		redirect($_SERVER['HTTP_REFERER'], 'refresh');
 	}
 
 }
