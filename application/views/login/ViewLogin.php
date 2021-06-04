@@ -45,8 +45,8 @@
                     <div class="small text-muted"> <?php echo $this->session->flashdata('info'); ?></div>
                 </div>
                 <form action="<?= site_url('proses_login') ?>" method="post">
-                    <label>Email</label>
-                    <input type="text" name="email" class="form_login" placeholder="Masukkan Email">
+                    <label>Email/Username</label>
+                    <input type="text" name="email" class="form_login" placeholder="Masukkan Email/Username">
         
                     <label>Password</label>
                     <input type="password" name="password" class="form_login" placeholder="Masukkan Password">
