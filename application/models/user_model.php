@@ -35,6 +35,18 @@ class user_model extends CI_Model{
         } 
     }
 
+    function cekDataUsername($username,$password){
+        $this->db->where('password',$password);
+        $this->db->where('username',$username);
+        $query = $this->db->get('user');
+        if($query->num_rows() == 1){  
+            return true;  
+        }  
+        else{  
+            return false;       
+        } 
+    }
+
     function getData($username, $email){
         $this->db->where('username',$username);
         $this->db->where('email',$email);
@@ -70,6 +82,17 @@ class user_model extends CI_Model{
         $this->db->where('id_user',$idUser);
         return $this->db->update('user',$data);
     }
+
+    function getDataEmailByUsername($username){
+        $this->db->where('username',$username);
+        return $this->db->get('user')->row()->email;
+    }
+
+    function getDataUsernameByEmail($email){
+        $this->db->where('email',$email);
+        return $this->db->get('user')->row()->username;
+    }
+
 }
 
 ?>

@@ -19,17 +19,18 @@ class LoginController extends CI_Controller {
 		$this->load->view('login/ViewLogin');
 	}
 
-	private function setStatus($email,$password,$nama,$status){
+	private function setStatus($username,$email,$password,$nama,$role){
 		$data_session = array(
+			'username' => $username,
 			'email' => $email,
 			'password' => $password,
 			'nama' => $nama
 		);
 		$this->session->set_userdata($data_session);
 		$this->session->set_userdata("Status", "User");
-		$this->session->set_userdata('Role',$status);
-		$statusLogin = $status;
-		return $statusLogin;
+		$this->session->set_userdata('Role',$role);
+		$roleLogin = $role;
+		return $roleLogin;
 	}
 
 	private function redirectPage($status){
@@ -40,39 +41,54 @@ class LoginController extends CI_Controller {
 		}else if ($status == "Manajer"){
 			redirect('halaman_manajer');
 		}else {
-			redirect('index_admin');
+			$this->session->set_flashdata('info','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Username dan Password Tidak Sesuai. </div>'); 
+			redirect('login');
 		}
 	}
 
-	private function loginProses($email,$password,$idUser){
+	private function loginProses($username,$email,$password,$idUser){
 		$isUser = $this->pelanggan->cekData($idUser); 
 		$isAdmin = $this->admin->cekData($idUser);
 		$isKonsultan = $this->konsultan->cekData($idUser);
 		$isManajer = $this->manajer->cekData($idUser);
-		$statusLogin = "";
+		$roleLogin = "";
 		if($isUser){
 			$nama_user = $this->pelanggan->getNama($idUser);
-			$statusLogin = $this->setStatus($email,$password,$nama_user,"Pelanggan");
+			$roleLogin = $this->setStatus($username,$email,$password,$nama_user,"Pelanggan");
 		}else if ($isAdmin){
 			$nama_admin = $this->admin->getNama($idUser);
-			$statusLogin = $this->setStatus($email,$password,$nama_admin,"Admin");
+			$roleLogin = $this->setStatus($username,$email,$password,$nama_admin,"Admin");
 		}else if($isKonsultan){
 			$nama_konsultan = $this->konsultan->getNama($idUser);
-			$statusLogin = $this->setStatus($email,$password,$nama_konsultan,"Konsultan");
+			$roleLogin = $this->setStatus($username,$email,$password,$nama_konsultan,"Konsultan");
 		}else{
 			$nama_manajer = $this->admin->getNama($idUser);
-			$statusLogin = $this->setStatus($email,$password,$nama_manajer,"Manajer");
+			$roleLogin = $this->setStatus($username,$email,$password,$nama_manajer,"Manajer");
 		}
-		return $statusLogin;
+		return $roleLogin;
 	}
 
 	public function loginStep(){
-		$email = $this->input->post('email');
+		$loginAccount = $this->input->post('email');
 		$password = $this->input->post('password');
-		if($this->user->cekDataEmail($email,$password)){
-			$idUser = $this->user->getIDEmail($email,$password);
-			$status = $this->loginProses($email,$password,$idUser);
-			$this->redirectPage($status);
+		$isEmail = $this->user->cekDataEmail($loginAccount,$password);
+		$isUsername = $this->user->cekDataUsername($loginAccount,$password);
+		if($isEmail || $isUsername){
+			if($isEmail){
+				$idUser = $this->user->getIDEmail($loginAccount,$password);
+				$username = $this->user->getDataUsernameByEmail($loginAccount);
+				$status = $this->loginProses($username,$loginAccount,$password,$idUser);
+				$this->redirectPage($status);
+			}else if($isUsername){
+				$email = $this->user->getDataEmailByUsername($loginAccount);
+				$idUser = $this->user->getIDEmail($email,$password);
+				$status = $this->loginProses($loginAccount,$email,$password,$idUser);
+				$this->redirectPage($status);
+			}else{
+				$status = "not_found";
+				$this->redirectPage($status);
+			}		
 		}else{
 			$this->session->set_flashdata('info','<div class="alert alert-danger alert-dismissible fade show" role="alert">
             Username dan Password Tidak Sesuai. </div>'); 
