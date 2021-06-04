@@ -40,6 +40,8 @@ class LoginController extends CI_Controller {
 			redirect('KonsultanController');
 		}else if ($status == "Manajer"){
 			redirect('halaman_manajer');
+		}else if ($status == "Admin"){
+			redirect('index_admin');
 		}else {
 			$this->session->set_flashdata('info','<div class="alert alert-danger alert-dismissible fade show" role="alert">
             Username dan Password Tidak Sesuai. </div>'); 
