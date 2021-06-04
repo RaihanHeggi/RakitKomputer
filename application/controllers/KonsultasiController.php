@@ -20,7 +20,7 @@ class KonsultasiController extends CI_Controller {
     {
 		$data['page_title'] = 'Konsultasi';
 		$data['main_content'] = 'konsultasi/indexKonsultasi';
-		$data['allKonsultasi'] = $this->konsultasi->getAll();
+		$data['allKonsultasi'] = $this->konsultasi->getAll($this->session->userdata());
         $this->load->view('template/ViewHeader', $data);
     }
 
@@ -29,9 +29,23 @@ class KonsultasiController extends CI_Controller {
 		$data['komentar'] = $this->komentar->getKomentar($id);
 
 		$data['page_title'] = 'Konsultasi';
-		$data['main_content'] = 'konsultasi/indexDetail';
-		$this->load->view('template/ViewHeader', $data, FALSE);
-		$this->session->set_userdata('referred_from', current_url());
+
+		if($this->session->userdata('Status') != 'Konsultan') {
+			echo $data['properti_konsultasi']['username'];
+			echo $this->session->userdata('username');
+			if($data['properti_konsultasi']['username'] == $this->session->userdata('username')) {
+				$data['main_content'] = 'konsultasi/indexDetail';
+				$this->load->view('template/ViewHeader', $data);
+			} else {
+				$data['main_content'] = 'konsultasi/indexKonsultasi';
+				$data['allKonsultasi'] = $this->konsultasi->getAll($this->session->userdata());
+				$this->load->view('template/ViewHeader', $data);
+			}
+		} else {
+			$data['main_content'] = 'konsultasi/indexDetail';
+			$this->load->view('template/ViewHeader', $data);
+		}
+		
 	}
 
 	public function postKonsultasi() {
@@ -76,6 +90,7 @@ class KonsultasiController extends CI_Controller {
 		$this->konsultasi->postKomentar($dataKomentar);
 		$referred_from = $this->session->userdata('referred_from');
 		redirect($referred_from, 'refresh');
+		$this->session->unset_userdata('referred_from');
 	}
 
 }
