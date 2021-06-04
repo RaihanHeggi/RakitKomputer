@@ -23,7 +23,7 @@
         </div>
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('login') ?>">Login</a>
                 </li>
             </ul>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" name="email" class="form-control" placeholder="Masukkan Email" required>
+                    <input type="email" name="email" class="form-control" placeholder="Masukkan Email" required>
                 </div>
                 <div class="form-group">
                     <label>Username</label>
@@ -73,6 +73,5 @@
              </form>
         </div>
     <div>
-    <footer></footer>
 </body>
 </html>

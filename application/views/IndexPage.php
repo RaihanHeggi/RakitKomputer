@@ -7,17 +7,11 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url');?>/assets/css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark pt-3 pb-3">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
-            <li class="nav-item">    
-                    <a class="nav-link" href="#">Logo Place </a>
-                </li>
                 <li class="nav-item">    
-                    <a class="nav-link" href="#">Left</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="//codeply.com">Codeply</a>
+                    <a class="nav-link" href="#">Logo Place </a>
                 </li>
             </ul>
         </div>
@@ -35,6 +29,23 @@
             </ul>
         </div>
     </nav>
-
+    <div class="jumbotron">
+        <h1 class="display-4">Hello, There!</h1>
+        <p class="text-center lead" style="font-size:25px">Selamat Berbelanja Di Website Kami</p>
+        <hr class="my-4">
+        <p></p>
+        <p></p>
+    </div>
+    <div class="mx-auto mt-2" style="width: 40 rem;font-family: proxima_nova,Helvetica Neue,Helvetica,Arial,sans-serif;">
+        <h1 style="font-size:80px">SELAMAT DATANG DI RAKIT KOMPUTER</h1>
+    </div>
+    
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Rakit Komputer</small>
+        </div>
+      </div>
+    </footer>
 </body>
-</html>
+</html> 

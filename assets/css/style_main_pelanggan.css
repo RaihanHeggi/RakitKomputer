@@ -1,0 +1,49 @@
+html,
+body,
+header,
+.carousel {
+	height: 60vh;
+	font-family: "Poppins", sans-serif;
+}
+
+@media (max-width: 740px) {
+	html,
+	body,
+	header,
+	.carousel {
+		height: 100vh;
+		font-family: "Poppins", sans-serif;
+	}
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+	html,
+	body,
+	header,
+	.carousel {
+		height: 100vh;
+		font-family: "Poppins", sans-serif;
+	}
+}
+.view,
+body,
+html {
+	height: 100%;
+	font-family: "Poppins", sans-serif;
+}
+.carousel {
+	height: 50%;
+}
+.carousel .carousel-inner,
+.carousel .carousel-inner .active,
+.carousel .carousel-inner .carousel-item {
+	height: 100%;
+}
+@media (max-width: 776px) {
+	.carousel {
+		height: 100%;
+	}
+}
+.page-footer {
+	background-color: #929fba;
+}

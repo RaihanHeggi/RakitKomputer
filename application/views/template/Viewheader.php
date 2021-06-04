@@ -12,17 +12,11 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark pt-3 pb-3">
 		<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
 					<a class="nav-link" href="#">Logo Place </a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Left</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="//codeply.com">Codeply</a>
 				</li>
 			</ul>
 		</div>

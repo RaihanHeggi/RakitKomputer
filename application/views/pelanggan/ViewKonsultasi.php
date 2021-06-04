@@ -28,9 +28,9 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('tabel_konsultan') ?>">Konsultasi</a>
+                    <a class="nav-link active" href="<?= site_url('tabel_konsultan') ?>">Konsultasi</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('halaman_pesanan') ?>"><i class="fa fa-shopping-cart"></i> Cart </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -52,38 +52,23 @@
         <div class="col-12">
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-table"></i> PESANAN YANG ANDA MILIKI</div>
+                    <i class="fa fa-table"></i>  Konsultan Di Rakit Komputer</div>
                     <div class="card-body">
-                        <div class="mb-2">
-                            <a class="btn btn-primary mr-3 mb-3" href="<?= site_url('cek_ongkir') ?>" role="button">Cek Ongkos Kirim</a>
-                        </div>
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Nama Barang</th>
-                                    <th scope="col">Harga Barang</th>
-                                    <th scope="col">Status Bayar</th>
-                                    <th scope="col">Verifikasi Pembayaran</th>
-                                    <th scope="col">Hapus Pesanan</th>
+                                    <th scope="col">ID Konsultan</th>
+                                    <th scope="col">Nama Konsultan</th>
+                                    <th scope="col">Konsultasi</th>
                                 </tr>   
                                 </thead>
                                 <tbody id="target">
                                     <tr>
-                                        <tr><?php foreach($data_pesanan as $dp) : ?>
-                                            
-                                            <td scope="row"><?= $dp['id']?></td>
-                                            <td scope="row"><?= $dp['nama_barang']?></td>
-                                            <td scope="row"><?= $dp['harga']?></td>
-                                            <td scope="row"><?= ucwords(strtolower($dp['status']))?></td>
-                                            <?php if( $dp['status'] == 'SUDAH BAYAR') :?>
-                                            <td><button class="btn btn-secondary" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#done_pay" >Sudah Bayar</button></td>
-                                            <td><button class="btn btn-secondary" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#done_pay" ><i class="fa fa-trash"></button></td>
-                                            <?php else:?>
-                                            <td><button class="btn btn-primary" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#edit-data<?php echo $dp['id'] ?>" > Verifikasi Bayar</button></td>
-                                            <td><a class="btn btn-danger" href="<?=  site_url('PelangganController/deletePesanan/'.$dp['id']) ?>" type="submit" style="border-radius: 10px;"><i class="fa fa-trash"></a></td>
-                                            <?php endif ?>
+                                        <tr><?php foreach($data_konsultan as $dp) : ?>
+                                            <td scope="row"><?= $dp['id_konsultan']?></td>
+                                            <td scope="row"><?= $dp['nama_konsultan']?></td> 
+                                            <td><a class="btn btn-primary" href="<?= site_url('IndexController/formKonsultasi/'.$dp['id_konsultan'])?>" type="submit" style="border-radius: 10px;">Sesi Konsultasi</a></td>
                                         </tr><?php endforeach; ?>
                                 </tbody>                   
                             </table>
@@ -94,54 +79,6 @@
         </div>
     </div>
     
-    <?php foreach($data_pesanan as $dp) :?>
-    <div class="modal fade" id="edit-data<?php echo $dp['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Verifikasi Pembayaran</h4>
-                </div>
-                <form class="form-horizontal" action="<?= site_url('PesananController/updateData')?>" method="post" enctype="multipart/form-data" role="form">
-                <div class="modal-body">
-                        <input name = "id" type ="hidden" value="<?php echo $dp['id']; ?>">
-                        <div class="form-group">
-                            <label for="role">Metode Pembayaran</label>
-                            <br>
-                            <select name="metode" id="metode" style="width:100%;height:40px" required>
-                                <option value="Transfer Bank">Transfer</option>
-                                <option value="Cash On Delivery">COD</option>
-                            </select>
-                            <br><br>
-                        </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-info" type="submit"> Simpan&nbsp;</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"> Batal</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php endforeach ?>
-
-    <!-- Sudah Bayar Modal-->
-    <div class="modal fade" id="done_pay" tabindex="-1" role="dialog" aria-labelledby="done_pay" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Your Payment Status</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">The Payment Process Has Been Done</div>
-          <div class="modal-footer">
-            <button class="btn btn-danger" type="button" data-dismiss="modal">Back</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
                                     
      <!-- Logout Modal-->
      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

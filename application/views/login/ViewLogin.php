@@ -32,7 +32,7 @@
     <div class="grid">
         <div class="grid-left">
             <div class = "foto">
-                <img src="<?php echo $this->config->item('base_url'); ?>/assets/img/loginBackground.jpg">
+                <img  class="foto" src="<?php echo $this->config->item('base_url'); ?>/assets/img/loginBackground.jpg">
             </div>
         </div>
         <div class="grid-right">
@@ -42,11 +42,11 @@
             <h1 id="LoginHeader">Selamat</br>Datang</h1>
             <div class="login_card">
                 <div class="form-group">
-                    <?php echo $this->session->flashdata('error_messages'); ?>
+                    <div class="small text-muted"> <?php echo $this->session->flashdata('info'); ?></div>
                 </div>
                 <form action="<?= site_url('proses_login') ?>" method="post">
-                    <label>Email</label>
-                    <input type="text" name="email" class="form_login" placeholder="Masukkan Email">
+                    <label>Email/Username</label>
+                    <input type="text" name="email" class="form_login" placeholder="Masukkan Email/Username">
         
                     <label>Password</label>
                     <input type="password" name="password" class="form_login" placeholder="Masukkan Password">
@@ -55,11 +55,11 @@
                         <p>Belum Mempunyai Akun ? <span><a href="<?= site_url('halaman_register') ?>" style="color: #17A1EF;">Register</a></span></p>
                     </div>
                     <input type="submit" class="buttonLogin" value="LOGIN">
+                    
                 </form>
             </div>
         <div>
     <div>
-    <footer></footer>
  
 </body>
 </html>

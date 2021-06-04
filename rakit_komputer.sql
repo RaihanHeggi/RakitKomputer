@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2021 at 03:17 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Jun 03, 2021 at 06:21 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -34,6 +35,13 @@ CREATE TABLE `admin` (
   `id_user` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `nama_admin`, `alamat_admin`, `id_user`) VALUES
+(1, 'Arga', 'Bogor ', 18);
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +57,16 @@ CREATE TABLE `barang` (
   `stok_barang` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `barang`
+--
+
+INSERT INTO `barang` (`id_barang`, `nama_barang`, `tipe_barang`, `merk_barang`, `harga_barang`, `stok_barang`) VALUES
+(1, 'VGA 2GB', 'Graphic Card', 'NVIDIA', '50000', 38),
+(3, 'VGA 1GB', 'Graphic Card', 'NVIDIA', '25000', 9),
+(4, 'RAM 2 GB', 'RAM ', 'Corsair', '300000', 60),
+(5, 'RAM 4GB', 'RAM', 'HYNIX', '400000', 50);
+
 -- --------------------------------------------------------
 
 --
@@ -59,8 +77,16 @@ CREATE TABLE `konsultan` (
   `id_konsultan` int(3) NOT NULL,
   `nama_konsultan` varchar(100) NOT NULL,
   `alamat_konsultan` varchar(100) NOT NULL,
-  `email_konsultan` varchar(100) NOT NULL
+  `email_konsultan` varchar(100) NOT NULL,
+  `id_user` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `konsultan`
+--
+
+INSERT INTO `konsultan` (`id_konsultan`, `nama_konsultan`, `alamat_konsultan`, `email_konsultan`, `id_user`) VALUES
+(1, 'Sya Raihan Heggi', 'Vila Bogor Indah 2 Blok DD2/No 1, Ciparigi, Bogor Utara, Kota Bogor, Jawa Barat, 16157', 'heggi.sya@gmail.com', 12);
 
 -- --------------------------------------------------------
 
@@ -70,6 +96,7 @@ CREATE TABLE `konsultan` (
 
 CREATE TABLE `konsultasi` (
   `id_konsultasi` int(3) NOT NULL,
+  `parent_id` int(4) NOT NULL,
   `data_konsultasi` varchar(255) NOT NULL,
   `id_pelanggan` int(3) NOT NULL,
   `id_konsultan` int(3) NOT NULL,
@@ -84,10 +111,16 @@ CREATE TABLE `konsultasi` (
 
 CREATE TABLE `laporan_keuangan` (
   `id_laporan` int(3) NOT NULL,
-  `tanggal_laporan` date NOT NULL,
-  `data_laporan` varchar(255) NOT NULL,
-  `id_pesanan` int(3) NOT NULL
+  `tanggal_laporan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `laporan_keuangan`
+--
+
+INSERT INTO `laporan_keuangan` (`id_laporan`, `tanggal_laporan`) VALUES
+(1, '2021-04-27'),
+(2, '2021-05-28');
 
 -- --------------------------------------------------------
 
@@ -102,6 +135,13 @@ CREATE TABLE `manajer` (
   `id_user` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `manajer`
+--
+
+INSERT INTO `manajer` (`id_manajer`, `nama_manajer`, `alamat_manajer`, `id_user`) VALUES
+(1, 'Hindia', 'Jln Telekomunikasi', 17);
+
 -- --------------------------------------------------------
 
 --
@@ -115,6 +155,14 @@ CREATE TABLE `pelanggan` (
   `email_pelanggan` varchar(100) NOT NULL,
   `id_user` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pelanggan`
+--
+
+INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `alamat_pelanggan`, `email_pelanggan`, `id_user`) VALUES
+(1, 'Hafidz Lazuardi', 'Banjar', 'hafidz123@gmail.com', 14),
+(2, 'Rafli ', 'Bogor', 'rafli123@gmail.com', 16);
 
 -- --------------------------------------------------------
 
@@ -132,6 +180,17 @@ CREATE TABLE `pesanan` (
   `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `pesanan`
+--
+
+INSERT INTO `pesanan` (`id_pesanan`, `metode_pembayaran`, `total_harga`, `id_barang`, `id_pelanggan`, `status`, `tanggal`) VALUES
+(1, 'Transfer Bank', '5000', 1, 1, 'SUDAH BAYAR', '2021-04-27'),
+(2, '', '10000', 2, 1, 'BARANG TIDAK TERSEDIA', '2021-04-27'),
+(3, 'Transfer Bank', '25000', 3, 1, 'SUDAH BAYAR', '2021-05-28'),
+(4, 'Cash On Delivery', '50000', 1, 1, 'SUDAH BAYAR', '2021-05-28'),
+(5, '', '400000', 5, 1, 'BELUM BAYAR', '2021-05-30');
+
 -- --------------------------------------------------------
 
 --
@@ -139,8 +198,22 @@ CREATE TABLE `pesanan` (
 --
 
 CREATE TABLE `user` (
-  `id_user` int(3) NOT NULL
+  `id_user` int(3) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `username`, `password`, `email`) VALUES
+(12, 'heggiraihan', '123', 'heggi.sya@gmail.com'),
+(14, 'hafidz123', '123', 'hafidz123@gmail.com'),
+(16, 'rafli', '123', 'rafli123@gmail.com'),
+(17, 'hindia123', '123', 'hindia123@gmail.com'),
+(18, 'arga123', '123', 'arga123@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -151,8 +224,7 @@ CREATE TABLE `user` (
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`),
-  ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_user_2` (`id_user`);
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `barang`
@@ -178,22 +250,19 @@ ALTER TABLE `konsultasi`
 -- Indexes for table `laporan_keuangan`
 --
 ALTER TABLE `laporan_keuangan`
-  ADD PRIMARY KEY (`id_laporan`),
-  ADD KEY `id_pesanan` (`id_pesanan`);
+  ADD PRIMARY KEY (`id_laporan`);
 
 --
 -- Indexes for table `manajer`
 --
 ALTER TABLE `manajer`
-  ADD PRIMARY KEY (`id_manajer`),
-  ADD KEY `id_user` (`id_user`);
+  ADD PRIMARY KEY (`id_manajer`);
 
 --
 -- Indexes for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  ADD PRIMARY KEY (`id_pelanggan`),
-  ADD KEY `id_user` (`id_user`);
+  ADD PRIMARY KEY (`id_pelanggan`);
 
 --
 -- Indexes for table `pesanan`
@@ -207,8 +276,7 @@ ALTER TABLE `pesanan`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`),
-  ADD UNIQUE KEY `id_user` (`id_user`);
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -218,19 +286,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_admin` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_barang` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `konsultan`
 --
 ALTER TABLE `konsultan`
-  MODIFY `id_konsultan` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_konsultan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `konsultasi`
@@ -242,61 +310,31 @@ ALTER TABLE `konsultasi`
 -- AUTO_INCREMENT for table `laporan_keuangan`
 --
 ALTER TABLE `laporan_keuangan`
-  MODIFY `id_laporan` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_laporan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `manajer`
 --
 ALTER TABLE `manajer`
-  MODIFY `id_manajer` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_manajer` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pelanggan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Constraints for dumped tables
---
-
---
--- Constraints for table `admin`
---
-ALTER TABLE `admin`
-  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE;
-
---
--- Constraints for table `konsultasi`
---
-ALTER TABLE `konsultasi`
-  ADD CONSTRAINT `konsultasi_ibfk_1` FOREIGN KEY (`id_pelanggan`) REFERENCES `pelanggan` (`id_pelanggan`) ON DELETE CASCADE,
-  ADD CONSTRAINT `konsultasi_ibfk_2` FOREIGN KEY (`id_konsultan`) REFERENCES `konsultan` (`id_konsultan`) ON DELETE CASCADE;
-
---
--- Constraints for table `laporan_keuangan`
---
-ALTER TABLE `laporan_keuangan`
-  ADD CONSTRAINT `laporan_keuangan_ibfk_1` FOREIGN KEY (`id_pesanan`) REFERENCES `pesanan` (`id_pesanan`) ON DELETE CASCADE;
-
---
--- Constraints for table `manajer`
---
-ALTER TABLE `manajer`
-  ADD CONSTRAINT `manajer_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE;
-
---
--- Constraints for table `pelanggan`
---
-ALTER TABLE `pelanggan`
-  ADD CONSTRAINT `pelanggan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE;
-
---
--- Constraints for table `pesanan`
+-- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  ADD CONSTRAINT `pesanan_ibfk_1` FOREIGN KEY (`id_pelanggan`) REFERENCES `pelanggan` (`id_pelanggan`) ON DELETE CASCADE,
-  ADD CONSTRAINT `pesanan_ibfk_2` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`) ON DELETE CASCADE;
+  MODIFY `id_pesanan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

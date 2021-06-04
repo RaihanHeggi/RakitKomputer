@@ -25,6 +25,35 @@ class barang_model extends CI_Model{
         return $this->db->get('barang')->row()->nama_barang;
     }
 
+	public function getHargaBarang($id){
+        $this->db->where('id_barang',$id);
+        return $this->db->get('barang')->row()->harga_barang;
+    }
+
+	public function getStokData($id){
+        $this->db->where('id_barang',$id);
+        return $this->db->get('barang')->row()->stok_barang;
+    }
+
+	function updateData($id,$data){
+        $this->db->where('id_barang',$id);
+        return $this->db->update('barang',$data);
+    }
+
+	public function hapusBarang($id_barang) {
+		$this->db->where('id_barang', $id_barang);
+		return $this->db->delete('barang');
+	}
+
+
+
+
+
+	
+
+
+
+
     //Fungsi Sudah Disiapkan 
     public function createBarang($data) {
 		return $this->db->insert('user', $data);
@@ -33,17 +62,6 @@ class barang_model extends CI_Model{
 	public function updateUser($id_barang, $data) {
 		$this->db->where('id_barang', $id_barang);
 		return $this->db->update('barang', $data);
-	}
-
-	public function deleteUser($id_barang) {
-		$this->db->where('id_barang', $id_barang);
-		return $this->db->deletes('barang');
-	}
-
-	public function getId($id_barang) {
-		$this->db->select('*');
-		$this->db->where('id_barang', $id_barang);
-		return $this->db->get('barang');
 	}
 
 	public function getSpecificNama($id_barang) {
@@ -87,12 +105,6 @@ class barang_model extends CI_Model{
 
 	public function getAllHarga() {
 		$this->db->select('hargaBarang');
-		return $this->db->get('barang');
-	}
-
-	public function getSpecificStok($id_barang) {
-		$this->db->select('stokBarang');
-		$this->db->where('id_barang', $id_barang);
 		return $this->db->get('barang');
 	}
 

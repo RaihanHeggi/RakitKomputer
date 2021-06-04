@@ -1,5 +1,6 @@
 body {
 	font-family: "Poppins", sans-serif;
+	overflow-x: hidden;
 }
 
 .bodyLogin {
@@ -91,16 +92,21 @@ label {
 	grid-column-end: 3;
 }
 
-img {
-	width: 2040px;
-	height: 800px;
-	box-shadow: 0 0 8px 8px white inset;
+.foto {
+	width: 1080px;
+	height: 720px;
+	box-shadow: 0 0 0 0;
 	border-radius: 5x;
 }
 
 footer {
-	background-color: #7e57c2;
+	background-color: #e9ecef;
 	align-self: end;
 	grid-column: 2;
-	margin-bottom: 1em;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 56px;
+	line-height: 55px;
 }

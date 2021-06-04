@@ -12,31 +12,30 @@
       </ol>
       <div class="ml-4 mr-4">
         <h1 class="mb-5">Form Edit Data Barang</h1>
-        <form action="" method="post">
+        <form action="<?= site_url('edit_barang')?>" method="post">
             <?php foreach($data_barang as $db) : ?>
             <div class="form-group">
-                <label for="idbarang" style="font-weight:bold">ID BARANG</label>
-                <input type="text" class="form-control" id="idbarang" placeholder="<?= $db['id_barang'] ?>" required>
+                <input type="hidden" class="form-control" id="idbarang" name='idbarang' value="<?= $db['id_barang']?>">
             </div>
             <div class="form-group">
                 <label for="namabarang" style="font-weight:bold">NAMA BARANG</label>
-                <input type="text" class="form-control" id="namabarang" placeholder="<?= $db['nama_barang']?>" required>
+                <input type="text" class="form-control" name="namabarang" id="namabarang" placeholder="<?= $db['nama_barang']?>" required>
             </div>
             <div class="form-group">
                 <label for="tipebarang" style="font-weight:bold">TIPE BARANG</label>
-                <input type="text" class="form-control" id="tipebarang" placeholder="<?= $db['tipe_barang']?>" required>
+                <input type="text" class="form-control" name="tipebarang" id="tipebarang" placeholder="<?= $db['tipe_barang']?>" required>
             </div>
             <div class="form-group">
                 <label for="merkbarang" style="font-weight:bold">MERK BARANG</label>
-                <input type="text" class="form-control" id="merkbarang" placeholder="<?= $db['merk_barang']?>" required>
+                <input type="text" class="form-control" name="merkbarang" id="merkbarang" placeholder="<?= $db['merk_barang']?>" required>
             </div>
             <div class="form-group">
                 <label for="hargabarang" style="font-weight:bold">HARGA BARANG</label>
-                <input type="text" class="form-control" id="hargabarang" placeholder="<?= $db['harga_barang']?>" required>
+                <input type="text" class="form-control" name="hargabarang" id="hargabarang" placeholder="<?= $db['harga_barang']?>" required>
             </div>
             <div class="form-group">
                 <label for="stokbarang" style="font-weight:bold">STOK BARANG</label>
-                <input type="text" class="form-control" id="stokbarang" placeholder="<?= $db['stok_barang']?>" required>
+                <input type="text" class="form-control" name="stokbarang" id="stokbarang" placeholder="<?= $db['stok_barang']?>" required>
             </div>
             <button type="submit" class="btn btn-primary mb-3" style="width:100%">Submit</button>
         </form>
