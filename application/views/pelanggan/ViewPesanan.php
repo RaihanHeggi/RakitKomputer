@@ -72,7 +72,6 @@
                                 <tbody id="target">
                                     <tr>
                                         <tr><?php foreach($data_pesanan as $dp) : ?>
-                                            
                                             <td scope="row"><?= $dp['id']?></td>
                                             <td scope="row"><?= $dp['nama_barang']?></td>
                                             <td scope="row"><?= $dp['harga']?></td>
@@ -82,7 +81,7 @@
                                             <td><button class="btn btn-secondary" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#done_pay" ><i class="fa fa-trash"></button></td>
                                             <?php else:?>
                                             <td><button class="btn btn-primary" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#edit-data<?php echo $dp['id'] ?>" > Verifikasi Bayar</button></td>
-                                            <td><a class="btn btn-danger" href="<?=  site_url('PelangganController/deletePesanan/'.$dp['id']) ?>" type="submit" style="border-radius: 10px;"><i class="fa fa-trash"></a></td>
+                                            <td><button class="btn btn-primary" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#delete_data<?php echo $dp['id'] ?>" > <i class="fa fa-trash"></button></td>
                                             <?php endif ?>
                                         </tr><?php endforeach; ?>
                                 </tbody>                   
@@ -121,6 +120,27 @@
                 </div>
             </div>
         </div>
+    </div>
+    <?php endforeach ?>
+
+    <!-- Hapus Modal-->
+    <?php foreach($data_pesanan as $dp) :?>
+    <div class="modal fade" id="delete_data<?php echo $dp['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="delete_data<?php echo $dp['id'] ?>" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete Items</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Are Sure To Delete This Items</div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
+            <a class="btn btn-primary" href="<?=  site_url('PelangganController/deletePesanan/'.$dp['id']) ?>">Hapus</a>
+          </div>
+        </div>
+      </div>
     </div>
     <?php endforeach ?>
 
