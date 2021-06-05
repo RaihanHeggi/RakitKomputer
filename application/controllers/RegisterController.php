@@ -7,10 +7,10 @@ class RegisterController extends CI_Controller {
     {
 		parent::__construct();
         $this->load->model("user_model","user");
-	$this->load->model("pelanggan_model","pelanggan");
-	$this->load->model("admin_model","admin");
-	$this->load->model("konsultan_model","konsultan");
-	$this->load->model("manajer_model","manajer");
+		$this->load->model("pelanggan_model","pelanggan");
+		$this->load->model("admin_model","admin");
+		$this->load->model("konsultan_model","konsultan");
+		$this->load->model("manajer_model","manajer");
         #$this->load->model('modelRS');  
         #$this->load->model('LoginModel');
         $this->load->helper('url');  
