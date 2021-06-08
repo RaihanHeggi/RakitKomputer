@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'IndexController';
 $route['login'] = 'LoginController';
+$route['logout'] = 'LoginController/logout';
 $route['halaman_index'] = 'IndexController';
 $route['index_admin'] = 'AdminController';
 $route['halaman_register'] = 'RegisterController';
