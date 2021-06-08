@@ -97,4 +97,9 @@ class LoginController extends CI_Controller {
             redirect('login');
 		}
 	}
+
+	public function logout() {
+		$sess = $this->session->sess_destroy();
+		redirect('login', 'refresh');
+	}
 }
