@@ -12,6 +12,7 @@ class AdminController extends CI_Controller {
 		$this->load->model('konsultan_model','konsultan');
 		$this->load->model('pesanan_model','pesanan');
 		$this->load->model("laporan_model","laporan");
+		$this->load->library('unit_test');
         $this->load->helper('url');  
     }
 
@@ -177,11 +178,31 @@ class AdminController extends CI_Controller {
 			);
 			$this->laporan->insertData($data);
 			redirect('laporan_keuangan');
+			//return True;
 		}else {
 			$this->session->set_flashdata('info', '<div><label for="Alert" style="color:red">Data Sudah Pernah Dimasukkan</label></div>');
 			redirect('laporan_keuangan');
+			//return False;
 		}
 	}
+
+	//UNIT TEST ADD LAPORAN
+	//Untuk Menjalankan jangan lupa untuk menganti keluaran dari fungsi
+	function testAddLaporan(){
+		$test_2 = $this->addLaporan(2021-05-04);
+		$expected_2 = False;
+		$test_name_2 = "Mengecek Fungsionalitas addLaporan";
+		echo $this->unit->run($test_2,$expected_2,$test_name_2);
+
+		$test_1 = $this->addLaporan(2021-06-04);
+		$expected_1 = True;
+		$test_name_1 = "Mengecek Fungsionalitas addLaporan";
+		echo $this->unit->run($test_1,$expected_1,$test_name_1);
+
+	
+
+	}
+
 
 	public function dataLaporan($tanggal){
 		if($tanggal != NULL){
