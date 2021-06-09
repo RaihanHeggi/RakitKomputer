@@ -104,9 +104,6 @@ class LoginController extends CI_Controller {
 		redirect('login', 'refresh');
 	}
 
-
-
-
 	// UNIT TESTING SECTION  
 	public function testLoginProses(){
 		//True Value 

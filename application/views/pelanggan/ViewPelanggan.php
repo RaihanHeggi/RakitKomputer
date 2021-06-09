@@ -25,7 +25,7 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('tabel_konsultan') ?>">Konsultasi</a>
+                    <a class="nav-link" href="<?= site_url('konsultasi') ?>">Konsultasi</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('halaman_pesanan') ?>"><i class="fa fa-shopping-cart"></i> Cart </a>
@@ -187,12 +187,15 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
-            <a class="btn btn-primary" href="<?= site_url('halaman_index') ?>">Logout</a>
+            <a class="btn btn-primary" href="<?= site_url('logout') ?>">Logout</a>
           </div>
         </div>
       </div>
     </div>
 
+    <h1>SELAMAT DATANG DI HALAMAN PELANGGAN</h1>
+	<a class="btn btn-primary" href="<?php echo base_url('index.php/konsultasi'); ?>">Konsultasi shortcut</a>
+    <a><?php echo $this->session->userdata('nama') ?></a>
     <!-- Bootstrap core JavaScript-->
     <script src="<?php echo $this->config->item('base_url'); ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo $this->config->item('base_url'); ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
