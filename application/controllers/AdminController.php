@@ -96,6 +96,7 @@ class AdminController extends CI_Controller {
 		$dataPesanan = $this->pesanan->getPesananByBarang($id);
 		if($dataPesanan == NULL){
 			redirect('data_barang');
+			//return False;
 		}else{
 			foreach($dataPesanan as $dp){
 				if(($dp['status'] == "SUDAH BAYAR") && ($dp['status'] == "BARANG TIDAK TERSEDIA")){
@@ -107,8 +108,29 @@ class AdminController extends CI_Controller {
 					$this->pesanan->updateData($dp['id_pesanan'],$data);
 				}
 				redirect('data_barang');
+				//return True;
 			}
 		}
+	}
+
+	//Unit Test Delete Barang
+	//Untuk Menjalankan jangan lupa untuk menganti keluaran dari fungsi
+	public function testDeleteBarang(){
+		$test_2 = $this->FuncDeleteData(1);
+		$expected_2 = True;
+		$test_name_2 = "Mengecek Fungsionalitas Delete Barang";
+		echo $this->unit->run($test_2,$expected_2,$test_name_2);
+
+		//cek seharusnya false (apakah passed atau tidak)
+		$test_3 = $this->FuncDeleteData(8);
+		$expected_3 = True;
+		$test_name_3 = "Mengecek FungsionalitasDelete Barang";
+		echo $this->unit->run($test_3,$expected_3,$test_name_3);
+
+		$test_4 = $this->FuncDeleteData(NULL);
+		$expected_4 = False;
+		$test_name_4 = "Mengecek Fungsionalitas Delete Barang";
+		echo $this->unit->run($test_4,$expected_4,$test_name_4);
 	}
 
 	//Fungsionalitas Data Pelanggan 
@@ -129,6 +151,16 @@ class AdminController extends CI_Controller {
 		};
 		$data['data_pelanggan'] = $dataKirim;
 		$this->load->view('template/adminTemplate',$data);
+		//return $dataPelanggan / $dataKirim (Silahkan Dipilih ingin menguji keluaran yang mana);
+	}
+
+	//Unit Test Cek Pelanggan
+	//Untuk Menjalankan jangan lupa untuk menganti keluaran dari fungsi
+	public function testCekPelanggan(){
+		$test_2 = $this->cekPelanggan();
+		$expected_2 = $this->pelanggan->getAllData();
+		$test_name_2 = "Mengecek Fungsionalitas Data Pelanggan";
+		echo $this->unit->run($test_2,$expected_2,$test_name_2);
 	}
 
 
@@ -150,6 +182,16 @@ class AdminController extends CI_Controller {
 		};
 		$data['data_konsultan'] = $dataKirim;
 		$this->load->view('template/adminTemplate',$data);
+		//return $dataKonsultan;
+	}
+
+	//Unit Test Cek Konsultan
+	//Untuk Menjalankan jangan lupa untuk menganti keluaran dari fungsi
+	public function testCekKonsultan(){
+		$test_2 = $this->cekKonsultan();
+		$expected_2 = $this->konsultan->getAllData();
+		$test_name_2 = "Mengecek Fungsionalitas Data Konsultan";
+		echo $this->unit->run($test_2,$expected_2,$test_name_2);
 	}
 	
 
@@ -227,10 +269,25 @@ class AdminController extends CI_Controller {
 			$data['main_content'] = 'admin/spesifikDataLaporan';
 			$data['data_pesanan'] = $arrayData;
 			$this->load->view('template/adminTemplate',$data);
+			return True;
 		}else{
 			$this->session->set_flashdata('error_messages',' <div><label for="Alert" style="color:red">Data Tidak Lengkap</label></div>');
 			redirect('laporan_keuangan');
+			//return False; 
 		}
 	}
 
+	//Unit Test Data Laporan 
+	//Untuk Menjalankan jangan lupa untuk menganti keluaran dari fungsi
+	public function testDataLaporan(){
+		$test_2 = $this->dataLaporan(2021-05-04);
+		$expected_2 = True;
+		$test_name_2 = "Mengecek Fungsionalitas Data Laporan";
+		echo $this->unit->run($test_2,$expected_2,$test_name_2);
+
+		$test_1 = $this->dataLaporan(2021-06-04);
+		$expected_1 = False;
+		$test_name_1 = "Mengecek Fungsionalitas addLaporan";
+		echo $this->unit->run($test_1,$expected_1,$test_name_1);
+	}
 }
