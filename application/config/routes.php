@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'IndexController';
 $route['login'] = 'LoginController';
+$route['logout'] = 'LoginController/logout';
 $route['halaman_index'] = 'IndexController';
 $route['index_admin'] = 'AdminController';
 $route['halaman_register'] = 'RegisterController';
@@ -67,7 +68,6 @@ $route['edit_barang'] = 'AdminController/FuncEditBarang';
 $route['tambah_data_barang'] = 'AdminController/FuncTambahBarang';
 $route['tambah_data_admin'] = 'IndexController/updateAdmin';
 $route['tabel_konsultan'] = 'IndexController/dataKonsultan';
-$route['tabel_konsultasi'] = 'IndexController/dataKonsultasi';
 $route['laporan_keuangan'] = 'AdminController/laporanKeuangan';
 $route['profile_pelanggan'] = 'PelangganController/editProfilePelanggan';
 $route['profile_konsultan'] = 'KonsultanController/editProfileKonsultan';
@@ -78,5 +78,9 @@ $route['404_override'] = '';
 
 $route['konsultasi']['get'] = 'KonsultasiController';
 $route['konsultasi']['post'] = 'KonsultasiController/sendKonsultasi';
-$route['postKomentar']['post'] = 'KonsultasiController/postKomentar';
+$route['konsultasi/postKomentar']['post'] = 'KonsultasiController/postKomentar';
+$route['konsultasi/editkomen']['post'] = 'KonsultasiController/postEditKomentar';
+$route['konsultasi/tambah'] = 'KonsultasiController/postKonsultasi';
+$route['konsultasi/konsulDetail/(:num)'] = 'KonsultasiController/konsulDetail/$1';
+$route['konsultasi/deleteKomentar'] = 'KonsultasiController/deleteKomentar';
 $route['translate_uri_dashes'] = FALSE;

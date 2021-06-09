@@ -4,11 +4,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class konsultasi_model extends CI_Model {
 
-	public function getAll() {
-		return $this->db->select('*')
+	public function getAll($user) {
+		if($user['Status'] != NULL) {
+			if($user['Role'] == 'Konsultan') {
+				return $this->db->select('*')
 						->from('konsultasi')
 						->join('user', 'konsultasi.id_user = user.id_user')
 						->get()->result_array();
+			} else {
+				$id_user = $this->getIDUser($user['email']);
+				return $this->db->select('*')
+						->where('konsultasi.id_user', $id_user['id_user'])
+						->from('konsultasi')
+						->join('user', 'konsultasi.id_user = user.id_user')
+						->get()->result_array();
+			}
+		}
 	}
 
 	public function getIDUser($email) {

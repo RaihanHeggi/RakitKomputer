@@ -129,7 +129,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
-            <a class="btn btn-primary" href="<?= site_url('halaman_index') ?>">Logout</a>
+            <a class="btn btn-primary" href="<?= site_url('logout') ?>">Logout</a>
           </div>
         </div>
       </div>

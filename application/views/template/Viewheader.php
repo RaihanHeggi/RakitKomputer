@@ -29,7 +29,29 @@
 		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
+					<a class="nav-link" href="<?= site_url('konsultasi') ?>">Konsultasi</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="<?= site_url('halaman_pesanan') ?>"><i class="fa fa-shopping-cart"></i>
+						Cart </a>
+				</li>
+				<li class="nav-item dropdown">
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li class="nav-item">
+							<a class="nav-link" href="<?= site_url('profile_pelanggan') ?>">Profile</i></a>
+						</li>
+						<?php if($this->session->has_userdata('name')) { ?>
+				<li class="nav-item">
 					<a class="nav-link" href="<?= site_url('login') ?>">Login</a>
+				</li>
+				<?php } else { ?>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-fw fa-sign-out"></i>Logout
+                    </a>
+				</li>
+				<?php } ?>
+					</div>
 				</li>
 			</ul>
 		</div>
@@ -37,6 +59,25 @@
 
 	<?php $this->load->view($main_content) ?>
 
+
+	<!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
+            <a class="btn btn-primary" href="<?= site_url('logout') ?>">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
