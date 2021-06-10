@@ -28,7 +28,7 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('tabel_konsultan') ?>">Konsultasi</a>
+                  <a class="nav-link" href="<?= site_url('konsultasi') ?>">Konsultasi</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="<?= site_url('halaman_pesanan') ?>"><i class="fa fa-shopping-cart"></i> Cart </a>

@@ -20,12 +20,21 @@
 				</li>
 			</ul>
 		</div>
-		<div class="mx-auto order-0">
-			<a class="navbar-brand mx-auto" href="<?= site_url('halaman_index') ?>">Rakit Komputer</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-		</div>
+		<?php if($role == "Pelanggan") {?>
+			<div class="mx-auto order-0">
+				<a class="navbar-brand mx-auto" href="<?= site_url('PelangganController') ?>">Rakit Komputer</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+		<?php }else if ($role == "Konsultan"){ ?>
+			<div class="mx-auto order-0">
+				<a class="navbar-brand mx-auto" href="<?= site_url('KonsultanController') ?>">Rakit Komputer</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+		<?php }?>
 		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
@@ -58,7 +67,6 @@
 	</nav>
 
 	<?php $this->load->view($main_content) ?>
-
 
 	<!-- Logout Modal-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

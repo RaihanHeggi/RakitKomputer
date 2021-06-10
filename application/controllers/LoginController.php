@@ -119,6 +119,7 @@ class LoginController extends CI_Controller {
 		$test_4 = $this->loginProses("arga123",'argaz123@gmail.com','123',5);
 		$expected_4 = "Manajer";
 		$test_name_4 = "Mengecek Fungsionalitas Login Proses Mengembalikan Status Manajer";
+
 		echo $this->unit->run($test_1,$expected_1,$test_name_1);
 		echo $this->unit->run($test_2,$expected_2,$test_name_2);
 		echo $this->unit->run($test_3,$expected_3,$test_name_3);
@@ -137,6 +138,7 @@ class LoginController extends CI_Controller {
 		$test_8 = $this->loginProses("hindia123",'hindia123@gmail.com','123',4);
 		$expected_8 = "Manajer";
 		$test_name_8 = "Mengecek Fungsionalitas Login Proses Mengembalikan Status Manajer";
+
 		echo $this->unit->run($test_5,$expected_5,$test_name_5);
 		echo $this->unit->run($test_6,$expected_6,$test_name_6);
 		echo $this->unit->run($test_7,$expected_7,$test_name_7);
@@ -150,6 +152,7 @@ class LoginController extends CI_Controller {
 		$test_2 = $this->setStatus("hafidz123",'hafidz123@gmail.com','123',"Hafidz","Pelanggan");
 		$expected_2 = "Pelanggan";
 		$test_name_2 = "Mengecek Fungsionalitas Set Role Mengembalikan Status Konsultan";
+		
 		echo $this->unit->run($test_1,$expected_1,$test_name_1);
 		echo $this->unit->run($test_2,$expected_2,$test_name_2);
 	}
