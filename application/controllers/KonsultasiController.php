@@ -24,7 +24,8 @@ class KonsultasiController extends CI_Controller {
 			$data['page_title'] = 'Konsultasi';
 			$data['main_content'] = 'konsultasi/indexKonsultasi';
 			$data['allKonsultasi'] = $this->konsultasi->getAll($this->session->userdata());
-			$this->load->view('template/ViewHeader', $data);
+			$data['role'] = $this->session->userdata('Role');
+ 			$this->load->view('template/ViewHeader', $data);
 		}
     }
 
@@ -34,7 +35,7 @@ class KonsultasiController extends CI_Controller {
 		} else {
 			$data['properti_konsultasi'] = $this->komentar->get_properti_konsultasi($id);
 			$data['komentar'] = $this->komentar->getKomentar($id);
-
+			$data['role'] = $this->session->userdata('Role');
 			$data['page_title'] = 'Konsultasi';
 			if($this->session->userdata('Role') != 'Konsultan') {
 				if($data['properti_konsultasi']['username'] == $this->session->userdata('username')) {
@@ -58,6 +59,7 @@ class KonsultasiController extends CI_Controller {
 		} else {
 			$data['page_title'] = 'Post Konsultasi';
 			$data['main_content'] = 'konsultasi/postKonsultasi';
+			$data['role'] = $this->session->userdata('Role');
 			$this->load->view('template/ViewHeader', $data, FALSE);
 		}
 		

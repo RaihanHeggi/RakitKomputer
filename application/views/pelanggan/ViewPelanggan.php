@@ -193,9 +193,6 @@
       </div>
     </div>
 
-    <h1>SELAMAT DATANG DI HALAMAN PELANGGAN</h1>
-	<a class="btn btn-primary" href="<?php echo base_url('index.php/konsultasi'); ?>">Konsultasi shortcut</a>
-    <a><?php echo $this->session->userdata('nama') ?></a>
     <!-- Bootstrap core JavaScript-->
     <script src="<?php echo $this->config->item('base_url'); ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo $this->config->item('base_url'); ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
