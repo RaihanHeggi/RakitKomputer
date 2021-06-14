@@ -113,26 +113,6 @@ class AdminController extends CI_Controller {
 		}
 	}
 
-	//Unit Test Delete Barang
-	//Untuk Menjalankan jangan lupa untuk menganti keluaran dari fungsi
-	public function testDeleteBarang(){
-		$test_2 = $this->FuncDeleteData(1);
-		$expected_2 = True;
-		$test_name_2 = "Mengecek Fungsionalitas Delete Barang";
-		echo $this->unit->run($test_2,$expected_2,$test_name_2);
-
-		//cek seharusnya false (apakah passed atau tidak)
-		$test_3 = $this->FuncDeleteData(8);
-		$expected_3 = True;
-		$test_name_3 = "Mengecek FungsionalitasDelete Barang";
-		echo $this->unit->run($test_3,$expected_3,$test_name_3);
-
-		$test_4 = $this->FuncDeleteData(NULL);
-		$expected_4 = False;
-		$test_name_4 = "Mengecek Fungsionalitas Delete Barang";
-		echo $this->unit->run($test_4,$expected_4,$test_name_4);
-	}
-
 	//Fungsionalitas Data Pelanggan 
 	public function cekPelanggan(){
 		$data['main_content'] = 'admin/indexDataPelanggan';
