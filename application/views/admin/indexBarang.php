@@ -40,7 +40,7 @@
                             <td scope="row"><?= $db['harga_barang']?></td>
                             <td scope="row"><?= $db['stok_barang']?></td>
                             <td><a class="btn btn-primary" href="<?= site_url('AdminController/editBarang/'.$db['id_barang'])?>" type="submit" style="border-radius: 10px;">Edit</a></td>
-                            <td><a class="btn btn-danger" href="<?=  site_url('AdminController/FuncDeleteData/'.$db['id_barang']) ?>" type="submit" style="border-radius: 10px;">Delete</a></td></td>
+                            <td><button class="btn btn-primary" type="submit" style="border-radius: 10px;"  data-toggle="modal" data-target="#delete_data<?php echo $db['id_barang'] ?>" > <i class="fa fa-trash"></button></td>
                           </tr><?php endforeach; ?>
                     </tbody>                   
                 </table>
@@ -53,3 +53,25 @@
       </div>
     </div>
     <!-- /.container-fluid-->
+
+
+    <!-- Hapus Modal-->
+    <?php foreach($data_barang as $db) :?>
+    <div class="modal fade" id="delete_data<?php echo $db['id_barang'] ?>" tabindex="-1" role="dialog" aria-labelledby="delete_data<?php echo $db['id_barang'] ?>" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete Items</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Are Sure To Delete This Items</div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
+            <a class="btn btn-primary" href="<?= site_url('AdminController/FuncDeleteData/'.$db['id_barang']) ?>">Hapus</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php endforeach ?>
