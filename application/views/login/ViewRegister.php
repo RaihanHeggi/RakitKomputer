@@ -69,7 +69,7 @@
                     </select>
                     <br><br>
                 </div>                    
-                <input type="submit" class="buttonLogin" value="LOGIN">
+                <input type="submit" class="buttonLogin" value="REGISTER">
              </form>
         </div>
     <div>
