@@ -10,7 +10,7 @@
 								<h4><b>Konsultasi</b></h4>
 							</div>
 						</div>
-						<p><a href="<?php echo base_url('index.php/konsultasi/tambah'); ?>">+ Buat Konsultasi</a></p>
+						<p><a type=" button" class="btn btn-primary mt-4 ml-2" href="<?php echo base_url('index.php/konsultasi/tambah'); ?>">+ Buat Konsultasi</a></p>
 					</div>
 					<?php } ?>
 				</div>
